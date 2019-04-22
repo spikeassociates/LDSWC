@@ -1,5 +1,6 @@
 import { LitElement, html } from '../libs/lit-element/lit-element.js';
-import {joinClassNames} from '../libs/ldswcutils/ldswcutils.js';
+import {joinClassNames, getAssistive} from '../libs/ldswcutils/ldswcutils.js';
+import {ldswcconfig} from '../ldswcconfig.js';
 
 export default class EqIcon extends LitElement {
 	static get properties() {
@@ -44,7 +45,7 @@ export default class EqIcon extends LitElement {
 	
 		return html`
 <style>
-@import 'include/LD/assets/styles/salesforce-lightning-design-system.css';
+@import '${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css';
 </style>
 	<div class=${joinClassNames(sldsClasses)}>
 		<span
@@ -54,7 +55,7 @@ export default class EqIcon extends LitElement {
 		<div class="slds-icon-eq__bar"></div>
 		<div class="slds-icon-eq__bar"></div>
 		<div class="slds-icon-eq__bar"></div>
-		${assistive && html`<span class="slds-assistive-text">${assistive}</span>`}
+		${assistive && html`${getAssistive(assistive)}`}
 		</span>
 	</div>
 `;

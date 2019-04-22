@@ -1,5 +1,6 @@
 import { LitElement, html } from '../libs/lit-element/lit-element.js';
 import {joinClassNames} from '../libs/ldswcutils/ldswcutils.js';
+import {ldswcconfig} from '../ldswcconfig.js';
 
 export default class IconSVG extends LitElement {
 	static get properties() {
@@ -12,10 +13,6 @@ export default class IconSVG extends LitElement {
 			 * icon name
 			 */
 			icon: { type: String }, // isRequired
-			/**
-			 * Path to the corresponding sprite.
-			 */
-			assetPath: { type: String },
 			/**
 			 * icon size
 			 */
@@ -35,7 +32,6 @@ export default class IconSVG extends LitElement {
 		super();
 		this.className = null;
 		this.icon = '';
-		this.assetPath = '';
 		this.size = 'small';
 		this.sprite = 'standard';
 		this.isButton = false;
@@ -52,10 +48,10 @@ export default class IconSVG extends LitElement {
 
 		return html`
 <style>
-@import 'include/LD/assets/styles/salesforce-lightning-design-system.css';
+@import '${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css';
 </style>
 <svg aria-hidden="true" class=${joinClassNames(sldsClasses)}>
-	<use xmlns:xlink="http://www.w3.org/1999/xlink" href="${this.assetPath}${this.sprite}-sprite/svg/symbols.svg#${this.icon}" />
+	<use xmlns:xlink="http://www.w3.org/1999/xlink" href="${ldswcconfig.ldsBasePath}/icons/${this.sprite}-sprite/svg/symbols.svg#${this.icon}" />
 </svg>
 `;
 	}

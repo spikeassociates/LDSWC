@@ -1,5 +1,6 @@
 import { LitElement, html } from '../libs/lit-element/lit-element.js';
 import {joinClassNames} from '../libs/ldswcutils/ldswcutils.js';
+import {ldswcconfig} from '../ldswcconfig.js';
 
 const SCORES = ['negative', 'positive'];
 
@@ -52,7 +53,7 @@ export default class ScoreIcon extends LitElement {
 	
 		return html`
 <style>
-@import 'include/LD/assets/styles/salesforce-lightning-design-system.css';
+@import '${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css';
 </style>
 	<div class=${joinClassNames(sldsClasses)}>
 		<span

@@ -1,6 +1,7 @@
 import { LitElement, html } from '../libs/lit-element/lit-element.js';
 import {joinClassNames} from '../libs/ldswcutils/ldswcutils.js';
 import SpinnerContainer from './SpinnerContainer.js';
+import {ldswcconfig} from '../ldswcconfig.js';
 
 export default class Spinner extends LitElement {
 	static get properties() {
@@ -50,7 +51,7 @@ export default class Spinner extends LitElement {
 	spinner(classes) {
 		return html`
 <style>
-@import 'include/LD/assets/styles/salesforce-lightning-design-system.css';
+@import '${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css';
 </style>
 <div role="status" class=${joinClassNames(classes)}>
 	<span class="slds-assistive-text">${this.assistiveLabel}</span>

@@ -1,6 +1,7 @@
 import { LitElement, html } from '../libs/lit-element/lit-element.js';
-import {iconClass, joinClassNames} from '../libs/ldswcutils/ldswcutils.js';
+import {iconClass, joinClassNames, getAssistive} from '../libs/ldswcutils/ldswcutils.js';
 import IconSVG from './IconSVG.js';
+import {ldswcconfig} from '../ldswcconfig.js';
 
 export default class Icon extends LitElement {
 	static get properties() {
@@ -13,10 +14,6 @@ export default class Icon extends LitElement {
 			 * icon name
 			 */
 			icon: { type: String }, // isRequired
-			/**
-			 * Path to the corresponding sprite.
-			 */
-			assetPath: { type: String },
 			/**
 			 * ClassName that will be handed over to the <svg />
 			 */
@@ -45,7 +42,6 @@ export default class Icon extends LitElement {
 		this.className = null;
 		this.svgClassName = '';
 		this.icon = '';
-		this.assetPath = '';
 		this.size = 'small';
 		this.sprite = 'standard';
 		this.background = 'false';
@@ -54,11 +50,11 @@ export default class Icon extends LitElement {
 	}
 
 	get iconSVGTemplate() {
-		return html`<ldswc-iconsvg assetPath=${this.assetPath} className=${this.svgClassName} icon=${this.icon} size=${this.size} sprite=${this.sprite} />`;
+		return html`<ldswc-iconsvg className=${this.svgClassName} icon=${this.icon} size=${this.size} sprite=${this.sprite} />`;
 	}
 
 	get iconTemplate() {
-		return html`${this.iconSVGTemplate}<span class="slds-assistive-text">${this.title}</span>`;
+		return html`${this.iconSVGTemplate}${getAssistive(this.title)}`;
 	}
 
 	render() {
@@ -77,7 +73,7 @@ export default class Icon extends LitElement {
 	
 		return html`
 <style>
-@import 'include/LD/assets/styles/salesforce-lightning-design-system.css';
+@import '${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css';
 </style>
 ${this.div ?
 	html`<div class=${joinClassNames(sldsClasses)} title=${this.title}>${this.iconTemplate}</div>`:

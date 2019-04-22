@@ -7,6 +7,7 @@
 'use strict';
 
 import cx from '../classnames/classnames.js';
+import { html } from '../lit-html/lit-html.js';
 
 export function getRestOfAttribs(allAttribs, controlledAttribs) {
 	let attrs = [];
@@ -25,4 +26,8 @@ export function joinClassNames(classes) {
 
 export function iconClass(icon) {
 	return icon.replace(/_/g, '-');
+}
+
+export function getAssistive(assist) {
+	return html`<span class="slds-assistive-text">${assist}</span>`;
 }
