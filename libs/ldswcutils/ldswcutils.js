@@ -9,6 +9,8 @@
 import cx from '../classnames/classnames.js';
 import { html } from '../lit-html/lit-html.js';
 
+export * from './theme.js';
+
 export function getRestOfAttribs(allAttribs, controlledAttribs) {
 	let attrs = [];
 	let ctrled = Object.keys(controlledAttribs).map(k => k.toLowerCase());
@@ -30,4 +32,10 @@ export function iconClass(icon) {
 
 export function getAssistive(assist) {
 	return html`<span class="slds-assistive-text">${assist}</span>`;
+}
+
+export function applyDecorators(flavor, infix = null) {
+	if (!flavor) return null;
+	const prefix = !infix ? 'slds-' : `slds-${infix}_`;
+	return Array.isArray(flavor) ? flavor.map(f => `${prefix}${f}`) : `${prefix}${flavor}`;
 }
