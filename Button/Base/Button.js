@@ -59,9 +59,9 @@ export default class Button extends LitElement {
 
 	getRightShortcut(isRightShortcut, isShortcut) {
 		if (isRightShortcut) {
-			return html`<slot>${this.title}</slot>${isShortcut && this.innerButtonIcon}`;
+			return html`<slot>${this.title}</slot>${isShortcut ? this.innerButtonIcon : ''}`;
 		} else {
-			return html`${isShortcut && this.innerButtonIcon}<slot>${this.title}</slot>`;
+			return html`${isShortcut ? this.innerButtonIcon : ''}<slot>${this.title}</slot>`;
 		}
 	}
 
