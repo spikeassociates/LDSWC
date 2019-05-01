@@ -31,7 +31,7 @@ export default class Badge extends LitElement {
 		this.className = null;
 		this.flavor = null;
 		this.theme = null;
-		this.titlesprite = null;
+		this.title = null;
 	}
 
 	render() {
