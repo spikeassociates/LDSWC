@@ -78,9 +78,7 @@ export default class Button extends LitElement {
 		const isRightShortcut = isShortcut && position !== 'left';
 
 		return html`
-<style>
-@import '${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css';
-</style>
+<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 ${this.href ?
 	html`<a class=${joinClassNames(sldsClasses)} href=${this.href} title=${this.title}>${this.getRightShortcut(isRightShortcut, isShortcut)}</a>`:
 	html`<button class=${joinClassNames(sldsClasses)} href=${this.href} title=${this.title}>${this.getRightShortcut(isRightShortcut, isShortcut)}</button>`

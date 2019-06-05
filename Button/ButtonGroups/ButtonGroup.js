@@ -38,13 +38,10 @@ export default class ButtonGroup extends LitElement {
     ];
 
     return html`
-            <style>
-                 @import '${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css';
-            </style>
-            <div class=${joinClassNames(sldsClasses)} role="group">
-            <slot></slot>
-           </div>
-    `;
+<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
+<div class=${joinClassNames(sldsClasses)} role="group">
+<slot></slot>
+</div>`;
   };
 }
 customElements.define('ldswc-buttongroup', ButtonGroup);

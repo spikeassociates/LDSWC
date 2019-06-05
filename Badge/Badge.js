@@ -45,9 +45,7 @@ export default class Badge extends LitElement {
 		];
 
 		return html`
-<style>
-@import '${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css';
-</style>
+<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <span class=${joinClassNames(sldsClasses)} title=${this.title}>
 	<slot></slot>
 	${this.title && getAssistive(this.title)}

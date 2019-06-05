@@ -24,13 +24,10 @@ export default class Timeline extends LitElement {
 		];
 
 		return html`
-<style>
-@import '${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css';
-</style>
+<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <ul class=${joinClassNames(sldsClasses)}>
 <slot></slot>
-</ul>
-`;
+</ul>`;
 	}
 }
 

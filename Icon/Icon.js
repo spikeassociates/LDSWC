@@ -72,9 +72,7 @@ export default class Icon extends LitElement {
 		];
 	
 		return html`
-<style>
-@import '${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css';
-</style>
+<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 ${this.div ?
 	html`<div class=${joinClassNames(sldsClasses)} title=${this.title}>${this.iconTemplate}</div>`:
 	html`<span class=${joinClassNames(sldsClasses)} title=${this.title}>${this.iconTemplate}</span>`}

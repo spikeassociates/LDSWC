@@ -97,9 +97,7 @@ export default class TimelineItem extends LitElement {
 		]
 
 		return html`
-<style>
-@import '${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css';
-</style>
+<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <li>
     <div class=${joinClassNames(sldsClasses)}>
 		${this.title && getAssistive(this.title)}

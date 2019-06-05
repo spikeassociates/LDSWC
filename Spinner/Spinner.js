@@ -50,9 +50,7 @@ export default class Spinner extends LitElement {
 
 	spinner(classes) {
 		return html`
-<style>
-@import '${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css';
-</style>
+<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <div role="status" class=${joinClassNames(classes)}>
 	<span class="slds-assistive-text">${this.assistiveLabel}</span>
 	<div class="slds-spinner__dot-a" ></div>

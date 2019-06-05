@@ -57,10 +57,8 @@ export default class CheckboxButton extends LitElement {
     ];
 
     return html`
-             <style>
-                 @import '${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css';
-             </style>
-             <div class="slds-checkbox_add-button">
+<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
+            <div class="slds-checkbox_add-button">
                   ${this.getInput(sldsClasses)}
                 <label class="slds-checkbox_faux" for=${this.id}>
                   ${getAssistive(this.label)}
