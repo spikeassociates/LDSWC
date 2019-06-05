@@ -65,7 +65,7 @@ export default class CheckboxButton extends LitElement {
                 <label class="slds-checkbox_faux" for=${this.id}>
                   ${getAssistive(this.label)}
                 </label>
-            </div> `;
+            </div>`;
   };
 }
 customElements.define('ldswc-checkboxbutton', CheckboxButton);

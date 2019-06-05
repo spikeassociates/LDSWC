@@ -86,7 +86,6 @@ export default class MediaObject extends LitElement {
 			'slds-media__figure'
 		];
 
-		
 		return html`
 <style>
 @import '${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css';
