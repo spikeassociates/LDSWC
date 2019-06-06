@@ -50,8 +50,7 @@ export default class IconSVG extends LitElement {
 <link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <svg aria-hidden="true" class=${joinClassNames(sldsClasses)}>
 	<use xmlns:xlink="http://www.w3.org/1999/xlink" href="${ldswcconfig.ldsBasePath}/icons/${this.sprite}-sprite/svg/symbols.svg#${this.icon}" />
-</svg>
-`;
+</svg>`;
 	}
 }
 

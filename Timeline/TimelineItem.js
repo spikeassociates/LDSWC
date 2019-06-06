@@ -99,7 +99,7 @@ export default class TimelineItem extends LitElement {
 		return html`
 <link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <li>
-    <div class=${joinClassNames(sldsClasses)}>
+	<div class=${joinClassNames(sldsClasses)}>
 		${this.title && getAssistive(this.title)}
 		<ldswc-mediaobject>
 			<div slot="figure">
@@ -119,7 +119,8 @@ export default class TimelineItem extends LitElement {
 						sprite=${this.iconSprite}
 						icon=${this.iconIcon}
 						id=${this.iconId}
-						data-kkk=${this.iconData}>
+						data-kkk=${this.iconData}
+					>
 					</ldswc-iconsvg>
 				</div>
 			</div>
@@ -145,10 +146,9 @@ export default class TimelineItem extends LitElement {
 				</article>
 			</div>
 		</ldswc-mediaobject>
-        <slot></slot>
-    </div>
-</li>
-`;
+		<slot></slot>
+	</div>
+</li>`;
 	}
 }
 
