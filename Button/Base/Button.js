@@ -11,6 +11,10 @@ export default class Button extends LitElement {
 			 */
 			className: { type: String },
 			/**
+			 * class names for icon
+			 */
+			figureClass: { type: String },
+			/**
 			 * icon name
 			 */
 			icon: { type: String }, // isRequired
@@ -27,6 +31,10 @@ export default class Button extends LitElement {
 			 */
 			iconPosition: { type: String },
 			/**
+			 *  icon size
+			 */
+			iconSize: { type: String },
+			/**
 			 * Can be either `neutral`, `brand`, `outline-brand`, `destructive`, `text-destructive`, `success` or `inverse`
 			 * Default to `neutral`, set to "none" or `null` explicitely to render a plain button
 			 */
@@ -41,8 +49,10 @@ export default class Button extends LitElement {
 	constructor() {
 		super();
 		this.className = null;
+		this.figureClass = null;
 		this.icon = null;
 		this.iconPosition = null;
+		this.iconSize = 'small';
 		this.sprite = 'standard';
 		this.title = null;
 		this.flavor = 'neutral';
@@ -53,15 +63,15 @@ export default class Button extends LitElement {
 		return 'Button';
 	}
 
-	get innerButtonIcon() {
-		return html`<ldswc-buttonicon position=${this.position} icon=${this.icon} sprite=${this.sprite}></ldswc-buttonicon></ldswc-buttonicon>`;
+	innerButtonIcon(position) {
+		return html`<ldswc-buttonicon position=${position} icon=${this.icon} sprite=${this.sprite} className=${this.figureClass} size=${this.iconSize}></ldswc-buttonicon>`;
 	}
 
-	getRightShortcut(isRightShortcut, isShortcut) {
+	getRightShortcut(isRightShortcut, isShortcut, position) {
 		if (isRightShortcut) {
-			return html`<slot>${this.title}</slot>${isShortcut ? this.innerButtonIcon : ''}`;
+			return html`<slot>${this.title}</slot>${isShortcut ? this.innerButtonIcon(position) : ''}`;
 		} else {
-			return html`${isShortcut ? this.innerButtonIcon : ''}<slot>${this.title}</slot>`;
+			return html`${isShortcut ? this.innerButtonIcon(position) : ''}<slot>${this.title}</slot>`;
 		}
 	}
 
@@ -80,8 +90,8 @@ export default class Button extends LitElement {
 		return html`
 <link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 ${this.href ?
-	html`<a class=${joinClassNames(sldsClasses)} href=${this.href} title=${this.title}>${this.getRightShortcut(isRightShortcut, isShortcut)}</a>`:
-	html`<button class=${joinClassNames(sldsClasses)} href=${this.href} title=${this.title}>${this.getRightShortcut(isRightShortcut, isShortcut)}</button>`
+	html`<a class=${joinClassNames(sldsClasses)} href=${this.href} title=${this.title}>${this.getRightShortcut(isRightShortcut, isShortcut, position)}</a>`:
+	html`<button class=${joinClassNames(sldsClasses)} title=${this.title}>${this.getRightShortcut(isRightShortcut, isShortcut, position)}</button>`
 }
 `;
 	}
