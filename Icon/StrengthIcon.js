@@ -37,6 +37,10 @@ export default class StrengthIcon extends LitElement {
 		//this.animated = true;
 	}
 
+	createRenderRoot() {
+		return this;
+	}
+
 	render() {
 		//const otherattrs = getRestOfAttribs(this.attributes, this.constructor.properties);
 
@@ -47,9 +51,8 @@ export default class StrengthIcon extends LitElement {
 			{ 'slds-icon_container': true },
 			this.className
 		];
-	
+
 		return html`
-<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 	<div class=${joinClassNames(sldsClasses)}>
 		<span
 		class="slds-icon-strength ${animated}"
@@ -63,8 +66,7 @@ export default class StrengthIcon extends LitElement {
 		</svg>
 		${assistive && html`<span class="slds-assistive-text">${assistive}</span>`}
 		</span>
-	</div>
-`;
+	</div>`;
 	}
 }
 

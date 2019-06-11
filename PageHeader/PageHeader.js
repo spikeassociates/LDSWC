@@ -39,6 +39,10 @@ export default class PageHeader extends LitElement {
 		this.title = '';
 	}
 
+	createRenderRoot() {
+		return this;
+	}
+
 	render() {
 		const sldsClasses = [
 			'slds-page-header',
@@ -46,7 +50,6 @@ export default class PageHeader extends LitElement {
 		];
 
 		return html`
-			<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 			<div class=${joinClassNames(sldsClasses)}>
 				<div class="slds-page-header__row">
 					<div class="slds-page-header__col-title">

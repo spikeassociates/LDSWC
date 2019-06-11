@@ -38,6 +38,10 @@ export default class ButtonIcon extends LitElement {
 		this.sprite = 'standard';
 	}
 
+	createRenderRoot() {
+		return this;
+	}
+
 	render() {
 		//const otherattrs = getRestOfAttribs(this.attributes, this.constructor.properties);
 		
@@ -49,7 +53,6 @@ export default class ButtonIcon extends LitElement {
 		];
 
 		return html`
-<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <ldswc-iconsvg
 	className=${joinClassNames(sldsClasses)}
 	isButton

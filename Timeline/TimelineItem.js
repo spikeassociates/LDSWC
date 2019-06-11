@@ -110,6 +110,8 @@ export default class TimelineItem extends LitElement {
 					icon=${this.buttonIcon}
 					aria-controls=${this.id}
 					aria-expanded="true"
+					figureClass="slds-timeline__details-action-icon"
+					iconSize=""
 					>
 					${this.title && getAssistive(this.title)}
 				</ldswc-button>

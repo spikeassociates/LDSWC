@@ -34,6 +34,10 @@ export default class ScoreIcon extends LitElement {
 		this.score = 'positive';
 	}
 
+	createRenderRoot() {
+		return this;
+	}
+
 	renderScore(score) {
 		return html`
 <svg key=${score} viewBox="0 0 5 5" class=${`slds-icon-score__${score}`} aria-hidden="true" >
@@ -50,9 +54,8 @@ export default class ScoreIcon extends LitElement {
 			{ 'slds-icon_container': true },
 			this.className
 		];
-	
+
 		return html`
-<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 	<div class=${joinClassNames(sldsClasses)}>
 		<span
 		class="slds-icon-score"
@@ -62,8 +65,7 @@ export default class ScoreIcon extends LitElement {
 		${SCORES.map(this.renderScore)}
 		${assistive && html`<span class="slds-assistive-text">${assistive}</span>`}
 		</span>
-	</div>
-`;
+	</div>`;
 	}
 }
 

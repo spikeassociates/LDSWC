@@ -37,6 +37,10 @@ export default class IconSVG extends LitElement {
 		this.isButton = false;
 	}
 
+	createRenderRoot() {
+		return this;
+	}
+
 	render() {
 		//const otherattrs = getRestOfAttribs(this.attributes, this.constructor.properties);
 		
@@ -47,7 +51,6 @@ export default class IconSVG extends LitElement {
 		];
 
 		return html`
-<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <svg aria-hidden="true" class=${joinClassNames(sldsClasses)}>
 	<use xmlns:xlink="http://www.w3.org/1999/xlink" href="${ldswcconfig.ldsBasePath}/icons/${this.sprite}-sprite/svg/symbols.svg#${this.icon}" />
 </svg>`;

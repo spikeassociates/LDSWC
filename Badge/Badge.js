@@ -7,6 +7,10 @@ export default class Badge extends LitElement {
 	static get properties() {
 		return {
 			/**
+			 * label to show inside badge
+			 */
+			label: { type: String },
+			/**
 			 * class name
 			 */
 			className: { type: String },
@@ -34,6 +38,10 @@ export default class Badge extends LitElement {
 		this.title = null;
 	}
 
+	createRenderRoot() {
+		return this;
+	}
+
 	render() {
 		//const otherattrs = getRestOfAttribs(this.attributes, this.constructor.properties);
 		
@@ -45,12 +53,10 @@ export default class Badge extends LitElement {
 		];
 
 		return html`
-<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <span class=${joinClassNames(sldsClasses)} title=${this.title}>
-	<slot></slot>
+	${this.label}
 	${this.title && getAssistive(this.title)}
-</span>
-`;
+</span>`;
 	}
 }
 

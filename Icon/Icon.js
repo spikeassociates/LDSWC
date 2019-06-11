@@ -49,6 +49,10 @@ export default class Icon extends LitElement {
 		this.title = null;
 	}
 
+	createRenderRoot() {
+		return this;
+	}
+
 	get iconSVGTemplate() {
 		return html`<ldswc-iconsvg className=${this.svgClassName} icon=${this.icon} size=${this.size} sprite=${this.sprite} />`;
 	}
@@ -72,7 +76,6 @@ export default class Icon extends LitElement {
 		];
 	
 		return html`
-<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 ${this.div ?
 	html`<div class=${joinClassNames(sldsClasses)} title=${this.title}>${this.iconTemplate}</div>`:
 	html`<span class=${joinClassNames(sldsClasses)} title=${this.title}>${this.iconTemplate}</span>`}
