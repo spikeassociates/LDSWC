@@ -37,6 +37,14 @@ export default class MediaObject extends LitElement {
 			 *  Figure position. Can be "left" or "right".
 			 */
 			figurePosition: { type: String },
+			/**
+			 * mediabody
+			 */
+			mediabody: { type: String },
+			/**
+			 *  Figure definition
+			 */
+			figure: { type: String },
 		}
 	}
 
@@ -50,18 +58,26 @@ export default class MediaObject extends LitElement {
 		this.truncate = null;
 		this.title = null;
 		this.figurePosition = null;
-  }
-  
- 	renderFigure(figurePosition, figureClasses, bodyClasses) {
+		this.mediabody = '';
+		this.figure = '';
+	}
+
+	renderFigure(figurePosition, figureClasses, bodyClasses) {
+		var fig = eval('html`'+this.figure+'`');
+		var mbd = eval('html`'+this.mediabody+'`');
 		if (figurePosition == 'right') {
 			return html`
-			<div class=${joinClassNames(bodyClasses)} title=${this.title}><slot name="body"></slot></div>
-			<div class=${joinClassNames(figureClasses)}><slot name="figure"></slot></div>`
+			<div class=${joinClassNames(bodyClasses)} title=${this.title}>${mbd}</div>
+			<div class=${joinClassNames(figureClasses)}>${fig}</div>`
 		} else {
 			return html`
-			<div class=${joinClassNames(figureClasses)}><slot name="figure"></slot></div>
-			<div class=${joinClassNames(bodyClasses)} title=${this.title}><slot name="body"></slot></div>`
+			<div class=${joinClassNames(figureClasses)}>${fig}</div>
+			<div class=${joinClassNames(bodyClasses)} title=${this.title}>${mbd}</div>`
 		}
+	}
+
+	createRenderRoot() {
+		return this;
 	}
 
 	render() {
@@ -87,7 +103,6 @@ export default class MediaObject extends LitElement {
 		];
 
 		return html`
-<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <div class=${joinClassNames(sldsClasses)}>${this.renderFigure(this.figurePosition, figureClasses, bodyClasses)}</div>
 `;
 	}

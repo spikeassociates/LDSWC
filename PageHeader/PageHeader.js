@@ -27,6 +27,14 @@ export default class PageHeader extends LitElement {
 			 * title
 			 */
 			title: { type: String },
+			/**
+			 * mediabody
+			 */
+			mediabody: { type: String },
+			/**
+			 *  Figure definition
+			 */
+			figure: { type: String },
 		}
 	}
 
@@ -37,6 +45,8 @@ export default class PageHeader extends LitElement {
 		this.sprite = '';
 		this.info = '';
 		this.title = '';
+		this.mediabody = '';
+		this.figure = '';
 	}
 
 	createRenderRoot() {
@@ -48,20 +58,14 @@ export default class PageHeader extends LitElement {
 			'slds-page-header',
 			this.className,
 		];
-
+		var figprp = '<ldswc-icon sprite='+this.sprite+' icon='+this.icon+' svgClassName="slds-page-header__icon" className="slds-icon-standard-'+this.icon+'"></ldswc-icon>';
 		return html`
 			<div class=${joinClassNames(sldsClasses)}>
 				<div class="slds-page-header__row">
 					<div class="slds-page-header__col-title">
-						<ldswc-mediaobject figurePosition="left" title=${this.title}>
-							<ldswc-icon
-								sprite=${this.sprite}
-								icon=${this.icon}
-								svgClassName="slds-page-header__icon"
-								className="slds-icon-standard-${this.icon}"
-								slot="figure"
-							></ldswc-icon>
-							<span slot="body">
+						<ldswc-mediaobject figurePosition="left" title=${this.title}
+							figure='${figprp}'
+							mediabody='<span>
 								<div class="slds-page-header__name">
 									<div class="slds-page-header__name-title">
 										<h1>
@@ -70,7 +74,8 @@ export default class PageHeader extends LitElement {
 									</div>
 								</div>
 								<p class="slds-page-header__name-meta">${this.info}</p>
-							</span>
+							</span>'
+						>
 						</ldswc-mediaobject>
 					</div>
 				</div>
