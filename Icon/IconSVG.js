@@ -1,4 +1,4 @@
-import { LitElement, html } from '../libs/lit-element/lit-element.js';
+import { LitElement, html, svg } from '../libs/lit-element/lit-element.js';
 import {joinClassNames} from '../libs/ldswcutils/ldswcutils.js';
 import {ldswcconfig} from '../ldswcconfig.js';
 
@@ -50,7 +50,7 @@ export default class IconSVG extends LitElement {
 			this.className
 		];
 
-		return html`
+		return svg`
 <svg aria-hidden="true" class=${joinClassNames(sldsClasses)}>
 	<use xmlns:xlink="http://www.w3.org/1999/xlink" href="${ldswcconfig.ldsBasePath}/icons/${this.sprite}-sprite/svg/symbols.svg#${this.icon}" />
 </svg>`;
