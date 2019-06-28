@@ -1,5 +1,5 @@
 import { LitElement, html } from '../libs/lit-element/lit-element.js';
-import {joinClassNames, getAssistive} from '../libs/ldswcutils/ldswcutils.js';
+import {joinClassNames, getAssistive, getAssistiveText} from '../libs/ldswcutils/ldswcutils.js';
 import {ldswcconfig} from '../ldswcconfig.js';
 import MediaObject from '../MediaObject/MediaObject.js';
 import IconSVG from '../Icon/IconSVG.js';
@@ -34,6 +34,10 @@ export default class TimelineItem extends LitElement {
 			actiionButtonFlavor: { type: String },
 			actionButtonSprite: { type: String },
 			actionButtonIcon: { type: String },
+			contents: { type: String },
+			contentstrigger: { type: String },
+			contentstimeline: { type: String },
+			contentsdetail: { type: String },
 		}
 	}
 
@@ -59,10 +63,18 @@ export default class TimelineItem extends LitElement {
 		this.actiionButtonFlavor = null;
 		this.actionButtonSprite = null;
 		this.actionButtonIcon = null;
+		this.contents = '';
+		this.contentstrigger = '';
+		this.contentstimeline = '';
+		this.contentsdetails = '';
+	}
+
+	createRenderRoot() {
+		return this;
 	}
 
 	get timelineDate() {
-		return html`<p class="slds-timeline__date">${this.date}</p>`;
+		return '<p class="slds-timeline__date">'+this.date+'</p>';
 	}
 
 	render() {
@@ -95,60 +107,45 @@ export default class TimelineItem extends LitElement {
 			'slds-timeline__icon',
 			this.iconClasses
 		]
-
+		const mfig = '<div><ldswc-button'
+			+' title="'+this.buttonTitle+'"'
+			+' flavor="'+this.buttonFlavor+'"'
+			+' sprite="'+this.buttonSprite+'"'
+			+' icon="'+this.buttonIcon+'"'
+			+' aria-controls="'+this.id+'"'
+			+' aria-expanded="true"'
+			+' figureClass="slds-timeline__details-action-icon"'
+			+' iconSize="">'
+			+(this.title && getAssistiveText(this.title))
+		+'</ldswc-button><div class="'+joinClassNames(iconClasses)+'" title="'+this.iconTitle+'">'
+			+'<ldswc-iconsvg'
+				+' assetPath="'+this.iconAssetPath+'"'
+				+' sprite="'+this.iconSprite+'"'
+				+' icon="'+this.iconIcon+'"'
+				+' id="'+this.iconId+'"'
+				+' data-kkk="'+this.iconData+'"></ldswc-iconsvg></div></div>';
+		const mbdy = '<div><div class="'+joinClassNames(triggerClasses)+'">'
+		+this.contentstrigger
+		+'<div class="'+joinClassNames(actionsClasses)+'">'+this.timelineDate
+				+'<ldswc-button'
+					+' title="'+this.actionButtonTitle+'"'
+					+' flavor="'+this.actionButtonFlavor+'"'
+					+' sprite="'+this.actionButtonSprite+'"'
+					+' icon="'+this.actionButtonIcon+'"'
+					+' className="'+this.actionButtonClasses+'">'
+					+(this.actionButtonTitle && getAssistiveText(this.actionButtonTitle))
+				+'</ldswc-button></div></div>'+this.contentstimeline
+				+'<article class="'+joinClassNames(detailsClasses)+'" id="'+this.id+'" aria-hidden="false">'
+			+this.contentsdetails+'</article></div>';
 		return html`
-<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <li>
 	<div class=${joinClassNames(sldsClasses)}>
 		${this.title && getAssistive(this.title)}
-		<ldswc-mediaobject>
-			<div slot="figure">
-				<ldswc-button
-					title=${this.buttonTitle}
-					flavor=${this.buttonFlavor}
-					sprite=${this.buttonSprite}
-					icon=${this.buttonIcon}
-					aria-controls=${this.id}
-					aria-expanded="true"
-					figureClass="slds-timeline__details-action-icon"
-					iconSize=""
-					>
-					${this.title && getAssistive(this.title)}
-				</ldswc-button>
-				<div class=${joinClassNames(iconClasses)} title=${this.iconTitle}>
-					<ldswc-iconsvg
-						assetPath=${this.iconAssetPath}
-						sprite=${this.iconSprite}
-						icon=${this.iconIcon}
-						id=${this.iconId}
-						data-kkk=${this.iconData}
-					>
-					</ldswc-iconsvg>
-				</div>
-			</div>
-			<div slot="body">
-				<div class=${joinClassNames(triggerClasses)}>
-					<slot name="timeline_trigger"></slot>
-					<div class=${joinClassNames(actionsClasses)}>
-						${this.timelineDate}
-						<ldswc-button
-							title=${this.actionButtonTitle}
-							flavor=${this.actionButtonFlavor}
-							sprite=${this.actionButtonSprite}
-							icon=${this.actionButtonIcon}
-							className=${this.actionButtonClasses}
-							>
-							${this.actionButtonTitle && getAssistive(this.actionButtonTitle)}
-						</ldswc-button>
-					</div>
-				</div>
-				<slot></slot>
-				<article class=${joinClassNames(detailsClasses)} id=${this.id} aria-hidden="false">
-					<slot name="timeline_details"></slot>
-				</article>
-			</div>
-		</ldswc-mediaobject>
-		<slot></slot>
+		<ldswc-mediaobject
+			figure=${mfig}
+			mediabody=${mbdy}
+		></ldswc-mediaobject>
+		${this.contents}
 	</div>
 </li>`;
 	}

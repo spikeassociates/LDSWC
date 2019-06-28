@@ -9,12 +9,18 @@ export default class Timeline extends LitElement {
 			 * class name
 			 */
 			className: { type: String },
+			contents: { type: String },
 		}
 	}
 
 	constructor() {
 		super();
 		this.className = null;
+		this.contents = '';
+	}
+
+	createRenderRoot() {
+		return this;
 	}
 
 	render() {
@@ -22,11 +28,34 @@ export default class Timeline extends LitElement {
 			'slds-timeline',
 			this.className
 		];
+		console.log(this.contents);
+		let contentsList = JSON.parse(this.contents);
 
 		return html`
-<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <ul class=${joinClassNames(sldsClasses)}>
-<slot></slot>
+${contentsList.map(tlcmp => html`<ldswc-timelineitem
+	id=${tlcmp.id}
+	title=${tlcmp.title}
+	date=${tlcmp.date}
+	className=${tlcmp.className}
+	buttonTitle=${tlcmp.buttonTitle}
+	buttonFlavor=${tlcmp.buttonFlavor}
+	buttonSprite=${tlcmp.buttonSprite}
+	buttonIcon=${tlcmp.buttonIcon}
+	iconTitle=${tlcmp.iconTitle}
+	iconClasses=${tlcmp.iconClasses}
+	iconAssetPath=${tlcmp.iconAssetPath}
+	iconSprite=${tlcmp.iconSprite}
+	iconIcon=${tlcmp.iconIcon}
+	actionButtonTitle=${tlcmp.actionButtonTitle}
+	actionButtonClasses=${tlcmp.actionButtonClasses}
+	actionButtonFlavor=${tlcmp.actionButtonFlavor}
+	actionButtonSprite=${tlcmp.actionButtonSprite}
+	actionButtonIcon=${tlcmp.actionButtonIcon}
+	contentstrigger=${tlcmp.contentstrigger}
+	contentstimeline=${tlcmp.contentstimeline}
+	contentsdetails=${tlcmp.contentsdetails}
+></ldswc-timelineitem>`)}
 </ul>`;
 	}
 }
