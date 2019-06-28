@@ -34,6 +34,10 @@ export function getAssistive(assist) {
 	return html`<span class="slds-assistive-text">${assist}</span>`;
 }
 
+export function getAssistiveText(assist) {
+	return '<span class="slds-assistive-text">'+assist+'</span>';
+}
+
 export function applyDecorators(flavor, infix = null) {
 	if (!flavor) return null;
 	const prefix = !infix ? 'slds-' : `slds-${infix}_`;
