@@ -52,7 +52,7 @@ export default class MediaObject extends LitElement {
 		super();
 		this.bodyClassName = null;
 		this.className = null;
-		this.center = true;
+		this.center = null;
 		this.responsive = null;
 		this.size = null;
 		this.truncate = null;
