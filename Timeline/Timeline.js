@@ -28,9 +28,7 @@ export default class Timeline extends LitElement {
 			'slds-timeline',
 			this.className
 		];
-		console.log(this.contents);
 		let contentsList = JSON.parse(this.contents);
-
 		return html`
 <ul class=${joinClassNames(sldsClasses)}>
 ${contentsList.map(tlcmp => html`<ldswc-timelineitem
@@ -52,9 +50,9 @@ ${contentsList.map(tlcmp => html`<ldswc-timelineitem
 	actionButtonFlavor=${tlcmp.actionButtonFlavor}
 	actionButtonSprite=${tlcmp.actionButtonSprite}
 	actionButtonIcon=${tlcmp.actionButtonIcon}
-	contentstrigger=${tlcmp.contentstrigger}
-	contentstimeline=${tlcmp.contentstimeline}
-	contentsdetails=${tlcmp.contentsdetails}
+	contentstrigger=${window.ldswcproperties.timeline[tlcmp.contentstrigger].contentstrigger}
+	contentstimeline=${window.ldswcproperties.timeline[tlcmp.contentstimeline].contentstimeline}
+	contentsdetails=${window.ldswcproperties.timeline[tlcmp.contentsdetails].contentsdetails}
 ></ldswc-timelineitem>`)}
 </ul>`;
 	}
