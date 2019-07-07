@@ -1,6 +1,5 @@
 import { LitElement, html } from '../../libs/lit-element/lit-element.js';
 import {joinClassNames} from '../../libs/ldswcutils/ldswcutils.js';
-import {ldswcconfig} from '../../ldswcconfig.js';
 import ButtonIcon from './ButtonIcon.js';
 
 export default class Button extends LitElement {
@@ -26,6 +25,10 @@ export default class Button extends LitElement {
 			 * Title attribute. Will be button content if no children are set
 			 */
 			title: { type: String },
+			/**
+			 * subelements of button
+			 */
+			children: { type: String },
 			/**
 			 *  Shortcut to render a button with an icon. Can be "left" or "right". Used together with `icon`
 			 */
@@ -55,8 +58,13 @@ export default class Button extends LitElement {
 		this.iconSize = 'small';
 		this.sprite = 'standard';
 		this.title = null;
+		this.children = null;
 		this.flavor = 'neutral';
 		this.href = null;
+	}
+
+	createRenderRoot() {
+		return this;
 	}
 
 	get displayName() {
@@ -68,15 +76,16 @@ export default class Button extends LitElement {
 	}
 
 	getRightShortcut(isRightShortcut, isShortcut, position) {
+		let title = this.children || this.title;
+		title = eval('html`'+title+'`');
 		if (isRightShortcut) {
-			return html`<slot>${this.title}</slot>${isShortcut ? this.innerButtonIcon(position) : ''}`;
+			return html`${title}${isShortcut ? this.innerButtonIcon(position) : ''}`;
 		} else {
-			return html`${isShortcut ? this.innerButtonIcon(position) : ''}<slot>${this.title}</slot>`;
+			return html`${isShortcut ? this.innerButtonIcon(position) : ''}${title}`;
 		}
 	}
 
 	render() {
-		//const otherattrs = getRestOfAttribs(this.attributes, this.constructor.properties);
 		const hasFlavor = this.flavor != null && this.flavor !== 'none';
 		const sldsClasses = [
 			'slds-button',
@@ -88,12 +97,10 @@ export default class Button extends LitElement {
 		const isRightShortcut = isShortcut && position !== 'left';
 
 		return html`
-<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 ${this.href ?
 	html`<a class=${joinClassNames(sldsClasses)} href=${this.href} title=${this.title}>${this.getRightShortcut(isRightShortcut, isShortcut, position)}</a>`:
 	html`<button class=${joinClassNames(sldsClasses)} title=${this.title}>${this.getRightShortcut(isRightShortcut, isShortcut, position)}</button>`
-}
-`;
+}`;
 	}
 }
 
