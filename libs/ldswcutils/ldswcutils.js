@@ -30,6 +30,10 @@ export function iconClass(icon) {
 	return icon.replace(/_/g, '-');
 }
 
+export function getEmptySpan() {
+	return html`<span name="__emptyforformatting"></span>`;
+}
+
 export function getAssistive(assist) {
 	return html`<span class="slds-assistive-text">${assist}</span>`;
 }
