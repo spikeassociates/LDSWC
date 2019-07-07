@@ -115,9 +115,9 @@ export default class TimelineItem extends LitElement {
 			+' aria-controls="'+this.id+'"'
 			+' aria-expanded="true"'
 			+' figureClass="slds-timeline__details-action-icon"'
-			+' iconSize="">'
-			+(this.title && getAssistiveText(this.title))
-		+'</ldswc-button><div class="'+joinClassNames(iconClasses)+'" title="'+this.iconTitle+'">'
+			+' iconSize=""'
+			+' children="'+(this.title && getAssistiveText(this.title))+'"'
+		+'></ldswc-button><div class="'+joinClassNames(iconClasses)+'" title="'+this.iconTitle+'">'
 			+'<ldswc-iconsvg'
 				+' assetPath="'+this.iconAssetPath+'"'
 				+' sprite="'+this.iconSprite+'"'
@@ -132,9 +132,9 @@ export default class TimelineItem extends LitElement {
 					+' flavor="'+this.actionButtonFlavor+'"'
 					+' sprite="'+this.actionButtonSprite+'"'
 					+' icon="'+this.actionButtonIcon+'"'
-					+' className="'+this.actionButtonClasses+'">'
-					+(this.actionButtonTitle && getAssistiveText(this.actionButtonTitle))
-				+'</ldswc-button></div></div>'+this.contentstimeline
+					+' className="'+this.actionButtonClasses+'"'
+					+' children="'+(this.actionButtonTitle && getAssistiveText(this.actionButtonTitle))+'"'
+				+'></ldswc-button></div></div>'+this.contentstimeline
 				+'<article class="'+joinClassNames(detailsClasses)+'" id="'+this.id+'" aria-hidden="false">'
 			+this.contentsdetails+'</article></div>';
 		return html`

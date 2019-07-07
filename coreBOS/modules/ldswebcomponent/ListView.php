@@ -40,8 +40,8 @@ require_once 'Smarty_setup.php';
 <ldswc-eqicon title="equalizer" animated></ldswc-eqicon>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <ldswc-spinner title="container" size="large" delayed></ldswc-spinner>
-<ldswc-button sprite="standard" icon="search" size="large" onclick="alert('hi');">Say hi</ldswc-button>
-<ldswc-button sprite="standard" icon="search" size="large" iconPosition="right" onclick="alert('bye');">Say bye</ldswc-button>
+<ldswc-button sprite="standard" icon="search" size="large" onclick="alert('hi');" children="Say hi"></ldswc-button>
+<ldswc-button sprite="standard" icon="search" size="large" iconPosition="right" onclick="alert('bye');" children="Say bye"></ldswc-button>
 <ldswc-button sprite="standard" icon="search" size="large" iconPosition="right" title="this is a title"></ldswc-button>
 <ldswc-buttonicon sprite="standard" icon="account" size="large" ></ldswc-buttonicon>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
