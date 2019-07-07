@@ -15,13 +15,13 @@ export default class ButtonIcon extends LitElement {
 			 */
 			icon: { type: String }, // isRequired
 			/**
-			 * Position in `Button`. Either left or right, can also be `null`
+			 * Position in `Button`. Either left or right, can also be `null` or none
 			 */
 			position: { type: String },
 			/**
 			 * icon size
 			 */
-			size: { type: String }, // oneOf(['xx-small', 'x-small', 'small', 'medium', 'large']),
+			size: { type: String }, // oneOf(['xx-small', 'x-small', 'small', 'medium', 'large', 'none]),
 			/**
 			 * icon sprite name
 			 */
@@ -43,12 +43,12 @@ export default class ButtonIcon extends LitElement {
 	}
 
 	render() {
-		//const otherattrs = getRestOfAttribs(this.attributes, this.constructor.properties);
-		
+		const hasSize = this.size != null && this.size !== 'none';
+		const hasPos = this.position != null && this.position !== 'none';
 		const sldsClasses = [
 			'slds-button__icon',
-			{ [`slds-button__icon_${this.size}`]: !!this.size },
-			{ [`slds-button__icon_${this.position}`]: !!this.position },
+			{ [`slds-button__icon_${this.size}`]: hasSize },
+			{ [`slds-button__icon_${this.position}`]: hasPos },
 			this.className
 		];
 

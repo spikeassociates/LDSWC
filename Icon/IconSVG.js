@@ -16,7 +16,7 @@ export default class IconSVG extends LitElement {
 			/**
 			 * icon size
 			 */
-			size: { type: String }, // oneOf(['xx-small', 'x-small', 'small', 'medium', 'large']),
+			size: { type: String }, // oneOf(['xx-small', 'x-small', 'small', 'medium', 'large', 'none']),
 			/**
 			 * icon sprite name
 			 */
@@ -42,11 +42,10 @@ export default class IconSVG extends LitElement {
 	}
 
 	render() {
-		//const otherattrs = getRestOfAttribs(this.attributes, this.constructor.properties);
-		
+		const hasSize = this.size != null && this.size !== 'none';
 		const sldsClasses = [
 			{ 'slds-icon': !this.isButton },
-			{ [`slds-icon_${this.size}`]: !!this.size },
+			{ [`slds-icon_${this.size}`]: hasSize },
 			this.className
 		];
 
