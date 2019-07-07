@@ -9,7 +9,7 @@ export default class Timeline extends LitElement {
 			 * class name
 			 */
 			className: { type: String },
-			contents: { type: String },
+			contents: { type: Object },
 		}
 	}
 
@@ -28,10 +28,9 @@ export default class Timeline extends LitElement {
 			'slds-timeline',
 			this.className
 		];
-		let contentsList = JSON.parse(this.contents);
 		return html`
 <ul class=${joinClassNames(sldsClasses)}>
-${contentsList.map(tlcmp => html`<ldswc-timelineitem
+${this.contents.map(tlcmp => html`<ldswc-timelineitem
 	id=${tlcmp.id}
 	title=${tlcmp.title}
 	date=${tlcmp.date}
