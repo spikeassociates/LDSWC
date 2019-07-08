@@ -28,4 +28,4 @@ We are currently working in a [coreBOS extension](https://corebos.org) where we 
 
 ## Participate
 
- - [Gitter Chat](https://gitter.im/LDSWC)
+ - [![Gitter](https://badges.gitter.im/LDSWC/community.svg)](https://gitter.im/LDSWC/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
