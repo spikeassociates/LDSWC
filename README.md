@@ -1,4 +1,4 @@
-# Lightning Design System Web Components (LDSWC)
+# Lightning Design System lit-element Web Components (LDSWC)
 
 `LDSWC` provides [lit-element](https://lit-element.polymer-project.org) web components for the [Salesforce Lightning Design System](http://lightningdesignsystem.com/).
 
@@ -24,3 +24,8 @@
 <ldswc-spinner title="container" size="large" delayed></ldswc-spinner>
 ```
 
+We are currently working in a [coreBOS extension](https://corebos.org) where we learn and test the components. You can find the extension in the coreBOS directory.
+
+## Participate
+
+ - [Gitter Chat](https://gitter.im/LDSWC)
