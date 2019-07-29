@@ -1,3 +1,4 @@
+import Button from '../Button/Base/ButtonIcon.js';
 import ButtonIcon from '../Button/IconButtons/IconButton.js';
 import { LitElement, html } from '../libs/lit-element/lit-element.js';
 import { getThemeClass } from '../libs/ldswcutils/theme.js';
@@ -128,6 +129,7 @@ export default class Popover extends LitElement {
         size="small"
         sprite="action"
         icon="close"
+        title="close"
     />`;
   }
 	render() {

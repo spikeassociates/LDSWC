@@ -69,6 +69,9 @@ export default class SummaryDetail extends LitElement {
           <ldswc-iconbutton
             @click=${this.onOpen}
             class=${joinClassNames(iconButtonClass)}
+            icon="switch"
+            sprite="utility"
+            title="open"
           >
             <ldswc-buttonicon
               class="slds-summary-detail__action-icon"
