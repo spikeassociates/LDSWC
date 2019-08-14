@@ -22,6 +22,14 @@ export function getRestOfAttribs(allAttribs, controlledAttribs) {
 	return attrs.join(' ');
 }
 
+export function ldsIsEmpty(value) {
+	return (value == null || value == 'null' || value == 'undefined' || value == 'none');
+}
+
+export function ldsIsTruthy(value) {
+	return (value!==null && value!=='false' && value!=='0');
+}
+
 export function joinClassNames(classes) {
 	return cx(classes);
 }
