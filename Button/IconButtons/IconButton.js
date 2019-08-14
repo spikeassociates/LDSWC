@@ -76,8 +76,7 @@ export default class IconButton extends LitElement {
     const isInverse = this.flavor === 'inverse';
 
     /* eslint-disable no-nested-ternary */
-    const borderSuffix = isInverse && this.border
-      ? 'border-inverse'
+    const borderSuffix = this.isInverse && this.border ? 'border-inverse'
       : this.border === 'filled' ? 'border-filled' : 'border';
     /* eslint-enable */
 
@@ -85,12 +84,18 @@ export default class IconButton extends LitElement {
       prefix,
       { [`${prefix}-${this.size}`]: !!this.size },
       { [`${prefix}-${borderSuffix}`]: !!this.border },
-      { [`${prefix}-container`]: this.container },
+      { [`${prefix}-${this.container}`]: this.container },
       { [`${prefix}-inverse`]: isInverse && !this.border },
-      { [`${prefix}-more`]: this.more },
+      { [`${prefix}-${this.more}`]: this.more },
       { [`${prefix}-${this.flavor}`]: this.flavor && !isInverse },
       this.className
     ];
+
+    const isShortcut = !!this.icon && !!this.sprite;
+
+    const moreconfig = this.more ? '<ldswc-buttonicon size="xx-small" sprite="utility" icon="down"></ldswc-buttonicon>' : '';
+
+    const children = isShortcut ? '<ldswc-buttonicon sprite="'+this.sprite+'" icon="'+this.icon+'"></ldswc-buttonicon>'+moreconfig : '';
 
     return html`
       <ldswc-button
