@@ -97,13 +97,8 @@ export default class IconButton extends LitElement {
         class =${joinClassNames(sldsClasses)}
         flavor =${this.flavor}
         title =${this.title}
+        children =${children}
         >
-        <ldswc-buttonicon
-        icon = ${this.icon}
-        sprite = ${this.sprite}
-         size = ${this.size}
-        />
-        ${this.more} 
         ${this.title && getAssistive(this.title)}
       </ldswc-button >
     `;
