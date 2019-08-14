@@ -64,6 +64,10 @@ export default class IconButton extends LitElement {
     this.title = null;
   }
 
+  createRenderRoot() {
+        return this;
+  }
+
   render() {
 
     const prefix = ['slds-button_icon'];
@@ -89,7 +93,6 @@ export default class IconButton extends LitElement {
     ];
 
     return html`
-         <link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
       <ldswc-button
         class =${joinClassNames(sldsClasses)}
         flavor =${this.flavor}
@@ -107,6 +110,3 @@ export default class IconButton extends LitElement {
   };
 }
 customElements.define('ldswc-iconbutton', IconButton);
-
-
-
