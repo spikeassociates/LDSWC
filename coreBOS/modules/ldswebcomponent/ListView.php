@@ -17,6 +17,7 @@ require_once 'Smarty_setup.php';
 <script type="module" src="./include/ldswc/Spinner/index.js"></script>
 <script type="module" src="./include/ldswc/Button/Base/Button.js"></script>
 <script type="module" src="./include/ldswc/Button/Base/ButtonIcon.js"></script>
+<script type="module" src="./include/ldswc/Button/IconButtons/IconButton.js"></script>
 <script type="module" src="./include/ldswc/Button/FormButtons/CheckboxButton.js"></script>
 <script type="module" src="./include/ldswc/Badge/Badge.js"></script>
 <script type="module" src="./include/ldswc/MediaObject/MediaObject.js"></script>
@@ -48,7 +49,21 @@ require_once 'Smarty_setup.php';
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <ldswc-badge theme="inverse" title="this is assistive" label="Some Badge text"></ldswc-badge>
 <ldswc-badge theme="lightest" title="this is assistive" label="Another Badge"></ldswc-badge>
+<div class="slds-grid">
+<div class="slds-size_1-of-12">
 <ldswc-checkboxbutton id="mimi" label="checkboxbutton" ></ldswc-checkboxbutton>
+</div>
+<div class="slds-size_1-of-12">
+<ldswc-iconbutton more title="Settings" sprite="utility" icon="settings"></ldswc-iconbutton>
+</div>
+<div class="slds-size_1-of-12">
+<ldswc-iconbutton more title="search" sprite="standard" icon="search"></ldswc-iconbutton>
+</div>
+<div class="slds-size_1-of-12" style="padding:0.1rem;background-color:#16325C">
+<ldswc-iconbutton flavor="inverse" more title="Settings" sprite="utility" icon="settings"></ldswc-iconbutton>
+</div>
+</div>
+</div>
 <div class="slds-grid">
 <div class="slds-size_6-of-12">
 <ldswc-mediaobject figurePosition="left" title="media object title" center size="small" responsive
@@ -64,7 +79,6 @@ mediabody='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minu
 figure='<span class="slds-avatar slds-avatar_large">
 	<img alt="Person name" src="include/LD/assets/images/avatar3.jpg" title="User avatar" />
 </span>'>
->
 </ldswc-mediaobject>
 </div>
 </div>
