@@ -1,5 +1,5 @@
 import { LitElement, html } from '../../libs/lit-element/lit-element.js';
-import {joinClassNames} from '../../libs/ldswcutils/ldswcutils.js';
+import {joinClassNames, ldsIsEmpty} from '../../libs/ldswcutils/ldswcutils.js';
 import ButtonIcon from './ButtonIcon.js';
 
 export default class Button extends LitElement {
@@ -86,7 +86,7 @@ export default class Button extends LitElement {
 	}
 
 	render() {
-		const hasFlavor = this.flavor != null && this.flavor !== 'none';
+		const hasFlavor = !ldsIsEmpty(this.flavor);
 		const sldsClasses = [
 			'slds-button',
 			{ [`slds-button_${this.flavor}`]: hasFlavor },
