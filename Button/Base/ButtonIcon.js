@@ -11,6 +11,10 @@ export default class ButtonIcon extends LitElement {
 			 */
 			className: { type: String },
 			/**
+			 * button size
+			 */
+			size: { type: String }, // oneOf(['xx-small', 'x-small', 'small', 'medium', 'large', 'none]),
+			/**
 			 * icon name
 			 */
 			icon: { type: String }, // isRequired
@@ -21,7 +25,7 @@ export default class ButtonIcon extends LitElement {
 			/**
 			 * icon size
 			 */
-			size: { type: String }, // oneOf(['xx-small', 'x-small', 'small', 'medium', 'large', 'none]),
+			iconsize: { type: String }, // oneOf(['xx-small', 'x-small', 'small', 'medium', 'large', 'none]),
 			/**
 			 * icon sprite name
 			 */
@@ -35,6 +39,7 @@ export default class ButtonIcon extends LitElement {
 		this.icon = '';
 		this.position = null;
 		this.size = 'small';
+		this.iconsize = null;
 		this.sprite = 'standard';
 	}
 
@@ -44,6 +49,9 @@ export default class ButtonIcon extends LitElement {
 
 	render() {
 		const hasSize = this.size != null && this.size !== 'none';
+		if (this.iconsize==null && hasSize) {
+			this.iconsize = this.size;
+		}
 		const hasPos = this.position != null && this.position !== 'none';
 		const sldsClasses = [
 			'slds-button__icon',
@@ -58,7 +66,7 @@ export default class ButtonIcon extends LitElement {
 	isButton
 	icon=${this.icon}
 	sprite=${this.sprite}
-	size=${this.size}
+	size=${this.iconsize}
 ></ldswc-iconsvg>`;
 	}
 }
