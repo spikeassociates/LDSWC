@@ -1,6 +1,5 @@
 import { LitElement, html } from '../../libs/lit-element/lit-element.js';
-import { joinClassNames, getAssistive } from '../../libs/ldswcutils/ldswcutils.js';
-import { ldswcconfig } from '../../ldswcconfig.js';
+import { joinClassNames, getAssistive, ldsIsEmpty, ldsIsTruthy } from '../../libs/ldswcutils/ldswcutils.js';
 import Button from '../Base/Button.js';
 import ButtonIcon from '../Base/ButtonIcon.js';
 
@@ -70,6 +69,7 @@ export default class IconButton extends LitElement {
 
 	render() {
 		const prefix = ['slds-button_icon'];
+		const hasFlavor = !ldsIsEmpty(this.flavor);
 		const isInverse = this.flavor === 'inverse';
 		const borderSuffix = this.isInverse && this.border ? 'border-inverse' : this.border === 'filled' ? 'border-filled' : 'border';
 		const sldsClasses = [
@@ -78,18 +78,20 @@ export default class IconButton extends LitElement {
 			{ [`${prefix}-${borderSuffix}`]: !!this.border },
 			{ [`${prefix}-${this.container}`]: this.container },
 			{ [`${prefix}-inverse`]: isInverse && !this.border },
-			{ [`${prefix}-${this.more}`]: this.more },
-			{ [`${prefix}-${this.flavor}`]: this.flavor && !isInverse },
+			{ [`${prefix}-container-more`]: ldsIsTruthy(this.more) },
+			{ [`${prefix}-${this.flavor}`]: hasFlavor && !isInverse },
 			this.className
 		];
-
+		if (isInverse) {
+			this.flavor='none';
+		}
 		const isShortcut = !!this.icon && !!this.sprite;
-		const moreconfig = this.more ? '<ldswc-buttonicon size="xx-small" sprite="utility" icon="down"></ldswc-buttonicon>' : '';
-		const children = isShortcut ? '<ldswc-buttonicon sprite="'+this.sprite+'" icon="'+this.icon+'"></ldswc-buttonicon>'+moreconfig : '';
+		const moreconfig = this.more ? '<ldswc-buttonicon size="x-small" iconsize="none" sprite="utility" icon="down"></ldswc-buttonicon>' : '';
+		const children = isShortcut ? '<ldswc-buttonicon sprite="'+this.sprite+'" icon="'+this.icon+'" iconsize="none" size="none"></ldswc-buttonicon>'+moreconfig : '';
 
 		return html`
 			<ldswc-button
-				class =${joinClassNames(sldsClasses)}
+				className =${joinClassNames(sldsClasses)}
 				flavor =${this.flavor}
 				title =${this.title}
 				children =${children}
