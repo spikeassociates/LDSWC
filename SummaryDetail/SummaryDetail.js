@@ -48,7 +48,7 @@ export default class SummaryDetail extends LitElement {
 	}
 
 	renderTitle() {
-		if (this.title.indexOf('<div ')!=-1 || this.title.indexOf('<span ')!=-1) {
+		if (this.title.indexOf('<div')!=-1 || this.title.indexOf('<span')!=-1) {
 			var children = eval('html`'+this.title+'`');
 		} else {
 			var children = html`<h3 class="slds-text-heading_small slds-truncate">${this.title}</h3>`;
