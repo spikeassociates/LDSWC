@@ -59,7 +59,7 @@ export default class Popover extends LitElement {
 	constructor() {
 		super();
 		this.open = false;
-		this.closeable = true;
+		this.closeable = false;
 		this.header = null,
 		this.body = null,
 		this.footer = null,
@@ -89,7 +89,11 @@ export default class Popover extends LitElement {
 				borderTopRightRadius: 'calc(0.50rem - 1px)',
 			};
 		} else {
-			headerContent = this.header;
+			if (this.header.indexOf('<div')!=-1 || this.header.indexOf('<span')!=-1) {
+				headerContent = eval('html`'+this.header+'`');
+			} else {
+				headerContent = this.header;
+			}
 		}
 
 		return html`
@@ -100,19 +104,21 @@ export default class Popover extends LitElement {
 	}
 
 	renderBody() {
-		return html`
-		<div class="slds-popover__body">
-			${this.body}
-		</div>
-		`;
+		if (this.body.indexOf('<div')!=-1 || this.body.indexOf('<span')!=-1) {
+			var children = eval('html`<div class="slds-popover__body slds-popover__body_small">'+this.body+'</div>`');
+		} else {
+			var children = html`<div class="slds-popover__body">${this.body}</div>`;
+		}
+		return children;
 	}
 
 	renderFooter() {
-		return html`
-		<footer class="slds-popover__footer">
-			<p>${this.footer}</p>
-		</footer>
-		`;
+		if (this.footer.indexOf('<div')!=-1 || this.footer.indexOf('<span')!=-1) {
+			var children = eval('html`<div class="slds-popover__footer">'+this.footer+'</div>`');
+		} else {
+			var children = html`<div class="slds-popover__footer"><p>${this.footer}</p></div>`;
+		}
+		return children;
 	}
 
 	renderCloseButton() {
@@ -140,7 +146,7 @@ export default class Popover extends LitElement {
 			'slds-popover',
 			{ [`slds-nubbin_${this.nubbin}`]: !!this.nubbin },
 			{ 'slds-popover_panel': (this.panels && !this.customHeaderTheme) },
-			{ 'slds-hide': this.open },
+			{ 'slds-hide': !this.open },
 			getThemeClass(this.theme),
 			this.className
 		];
