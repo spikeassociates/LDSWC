@@ -131,7 +131,7 @@ require_once 'Smarty_setup.php';
 		></ldswc-buttongroup>
 	</div>
 	<div class="slds-size_3-of-12">
-	<ldswc-buttongroup
+		<ldswc-buttongroup
 			children='[
 				{
 					"id":"btgrp1",
@@ -169,7 +169,7 @@ require_once 'Smarty_setup.php';
 			children='[
 				{
 					"id":"btgrp1",
-					"flavor":"neutral",
+					"flavor":"brand",
 					"title":"Edit"
 				},
 				{
@@ -184,6 +184,132 @@ require_once 'Smarty_setup.php';
 				}
 			]'
 			overflow
+		></ldswc-buttongroup>
+	</div>
+</div>
+<div class="slds-grid slds-m-around--medium">
+	<div class="slds-size_2-of-12" style="padding:0.5rem;background:#16325c">
+		<ldswc-buttongroup
+			children='[
+				{
+					"id":"btgrp1",
+					"flavor":"inverse",
+					"title":"Edit",
+					"href":"javascript:alert(1);"
+				},
+				{
+					"id":"btgrp2",
+					"flavor":"inverse",
+					"title":"Delete",
+					"href":"javascript:alert(2);"
+				}
+			]'
+			overflow
+		></ldswc-buttongroup>
+	</div>
+	<div class="slds-size_1-of-12">
+	</div>
+	<div class="slds-size_2-of-12">
+		<ldswc-buttongroup
+			children='[
+				{
+					"id":"btgrp1",
+					"flavor":"neutral",
+					"icon":"edit",
+					"iconPosition":"left",
+					"iconSize":"small",
+					"sprite":"utility",
+					"title":"Edit"
+				},
+				{
+					"id":"btgrp2",
+					"flavor":"destructive",
+					"icon":"delete",
+					"iconPosition":"right",
+					"iconSize":"x-small",
+					"sprite":"utility",
+					"title":"Delete"
+				},
+				{
+					"id":"btgrp3",
+					"flavor":"success",
+					"icon":"refresh",
+					"iconPosition":"right",
+					"iconSize":"medium",
+					"sprite":"utility",
+					"title":"Refresh",
+					"more":"true"
+				}
+			]'
+			row icons
+		></ldswc-buttongroup>
+	</div>
+	<div class="slds-size_2-of-12">
+		<ldswc-buttongroup
+			children='[
+				{
+					"id":"btgrp1",
+					"icon":"edit",
+					"iconPosition":"left",
+					"iconSize":"small",
+					"sprite":"utility",
+					"title":"Edit"
+				},
+				{
+					"id":"btgrp2",
+					"icon":"delete",
+					"iconPosition":"right",
+					"iconSize":"x-small",
+					"sprite":"utility",
+					"title":"Delete"
+				},
+				{
+					"id":"btgrp3",
+					"flavor":"success",
+					"icon":"refresh",
+					"iconPosition":"right",
+					"iconSize":"medium",
+					"sprite":"utility",
+					"title":"Refresh",
+					"more":"true"
+				}
+			]'
+			row icons
+		></ldswc-buttongroup>
+	</div>
+	<div class="slds-size_2-of-12" style="padding:0.5rem;background:#16325c">
+		<ldswc-buttongroup
+			children='[
+				{
+					"id":"btgrp1",
+					"flavor":"inverse",
+					"icon":"edit",
+					"iconPosition":"left",
+					"iconSize":"small",
+					"sprite":"utility",
+					"title":"Edit"
+				},
+				{
+					"id":"btgrp2",
+					"flavor":"inverse",
+					"icon":"delete",
+					"iconPosition":"right",
+					"iconSize":"x-small",
+					"sprite":"utility",
+					"title":"Delete"
+				},
+				{
+					"id":"btgrp3",
+					"flavor":"inverse",
+					"icon":"refresh",
+					"iconPosition":"right",
+					"iconSize":"medium",
+					"sprite":"utility",
+					"title":"Refresh",
+					"more":"true"
+				}
+			]'
+			row icons
 		></ldswc-buttongroup>
 	</div>
 </div>
