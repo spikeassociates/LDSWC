@@ -25,6 +25,7 @@ require_once 'Smarty_setup.php';
 <script type="module" src="./include/ldswc/PageHeader/PageHeader.js"></script>
 <script type="module" src="./include/ldswc/Accordion/index.js"></script>
 <script type="module" src="./include/ldswc/SummaryDetail/index.js"></script>
+<script type="module" src="./include/ldswc/Popover/index.js"></script>
 
 <ldswc-pageheader
 	title="Lightning Design System web components!!"
@@ -68,6 +69,18 @@ require_once 'Smarty_setup.php';
 	</div>
 	<div class="slds-size_4-of-12">
 	<ldswc-summarydetail title='<div class="slds-grid"><h3 class="slds-text-heading_small slds-truncate slds-p-right_small" title="summary title">Summary Title</h3><ldswc-badge theme="lightest" title="this is assistive" label=" In Progress "></ldswc-badge></div><p>Additional information about this step</p>' summary="Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum ma"></ldswc-summarydetail>
+	</div>
+</div>
+
+<div class="slds-grid slds-m-around--medium">
+	<div class="slds-size_4-of-12">
+		<ldswc-popover open header="This is the Header" footer="This is the footer" body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></ldswc-popover>
+	</div>
+	<div class="slds-size_4-of-12">
+		<ldswc-popover id="popovermiddle" onClose="popoverclosefunction" open closeable nubbin="right-top" customHeaderTheme="warning" header="This is the Header" footer="This is the footer" body='<div class="slds-text-longform"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>'></ldswc-popover>
+	</div>
+	<div class="slds-size_4-of-12">
+		<ldswc-popover open closeable nubbin="left" customHeaderTheme="success" header='<span><h2 class="slds-text-heading_medium">Manage your channels</h2></span>' footer='<div class="slds-grid slds-grid_vertical-align-center"><span class="slds-text-title">Step 2 of 4</span><button class="slds-button slds-button_brand slds-col_bump-left">Next</button></div>' body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></ldswc-popover>
 	</div>
 </div>
 
@@ -370,6 +383,9 @@ ldswcproperties.timeline.taskItemBase4.contentsdetails = `<article class="slds-b
 ldswcproperties.accordion = {};
 ldswcproperties.accordion.accstory1 = {};
 ldswcproperties.accordion.accstory1.sumclickfunction = function(e) { console.log(e); alert('summary more info click on '+e.target.id)};
+ldswcproperties.popover = {};
+ldswcproperties.popover.popovermiddle = {};
+ldswcproperties.popover.popovermiddle.popoverclosefunction = function(e) { console.log(e); alert('popover close click on '+e.target.id)};
 </script>
 <div class="slds-grid slds-gutters">
 <div class="slds-col slds-size_6-of-12">
