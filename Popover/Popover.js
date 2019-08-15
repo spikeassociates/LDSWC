@@ -129,7 +129,7 @@ export default class Popover extends LitElement {
 		return html`
 		<ldswc-iconbutton
 			class=${joinClassNames(closeButtonClasses)}
-			@click=${this.onClose}
+			@click=${this.onCloseClicked}
 			size="small"
 			sprite="action"
 			icon="close"
@@ -137,8 +137,13 @@ export default class Popover extends LitElement {
 		/>`;
 	}
 
-	onClose(e) {
+	onCloseClicked(e) {
 		this.open = !this.open;
+		if (window.ldswcproperties.popover[this.id] && typeof window.ldswcproperties.popover[this.id][this.onClose] === 'function') {
+			window.ldswcproperties.popover[this.id][this.onClose](e);
+		} else {
+			console.error('LDSWC: '+this.onClose+' is not a function.');
+		}
 	}
 
 	render() {
