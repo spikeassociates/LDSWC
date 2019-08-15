@@ -24,6 +24,10 @@ export default class SummaryDetail extends LitElement {
 			 */
 			title: { type: String }, 
 			/**
+			 * Summary of the component
+			 */
+			summary: { type: String },
+			/**
 			 * Renders custom title markup if provided. Receives title as an argument
 			 */
 			renderTitle: { type: String },
@@ -39,6 +43,8 @@ export default class SummaryDetail extends LitElement {
 		// this.onOpen = null;
 		this.isOpen = false;
 		this.iconButtonClassName = null;
+		this.title='';
+		this.summary='';
 	}
 
 	createRenderRoot() {
@@ -50,6 +56,14 @@ export default class SummaryDetail extends LitElement {
 		<h3 className="slds-text-heading_small slds-truncate">
 		${this.title}
 		</h3>`;
+	}
+
+	renderContent() {
+		return html`<p>${this.summary}</p>`;
+	}
+
+	onOpen(e) {
+		this.isOpen = !this.isOpen;
 	}
 
 	render() {
@@ -88,16 +102,6 @@ export default class SummaryDetail extends LitElement {
 				`}
 				</div>
 			</div>`;
-	}
-
-	renderContent() {
-		return html`
-		<p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-		`;
-	}
-
-	onOpen(e) {
-		this.isOpen = !this.isOpen;
 	}
 }
 
