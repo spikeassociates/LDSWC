@@ -18,6 +18,7 @@ require_once 'Smarty_setup.php';
 <script type="module" src="./include/ldswc/Button/Base/Button.js"></script>
 <script type="module" src="./include/ldswc/Button/Base/ButtonIcon.js"></script>
 <script type="module" src="./include/ldswc/Button/IconButtons/IconButton.js"></script>
+<script type="module" src="./include/ldswc/Button/IconButtons/StatefulIconButton.js"></script>
 <script type="module" src="./include/ldswc/Button/FormButtons/CheckboxButton.js"></script>
 <script type="module" src="./include/ldswc/Badge/Badge.js"></script>
 <script type="module" src="./include/ldswc/MediaObject/MediaObject.js"></script>
@@ -26,6 +27,7 @@ require_once 'Smarty_setup.php';
 <script type="module" src="./include/ldswc/Accordion/index.js"></script>
 <script type="module" src="./include/ldswc/SummaryDetail/index.js"></script>
 <script type="module" src="./include/ldswc/Popover/index.js"></script>
+<script type="module" src="./include/ldswc/ExpandableSection/index.js"></script>
 
 <ldswc-pageheader
 	title="Lightning Design System web components!!"
@@ -56,9 +58,11 @@ require_once 'Smarty_setup.php';
 	<ldswc-checkboxbutton id="mimi" label="checkboxbutton" ></ldswc-checkboxbutton>
 	</div>
 	<div class="slds-size_1-of-12">
-	<ldswc-iconbutton more title="Settings" sprite="utility" icon="settings"></ldswc-iconbutton>
+	<ldswc-statefuliconbutton icon="like" sprite="utility" size="small" onClick="console.log('like button clicked');"></ldswc-statefuliconbutton>
+	<ldswc-statefuliconbutton icon="like" sprite="utility" size="small" selected></ldswc-statefuliconbutton>
 	</div>
 	<div class="slds-size_1-of-12">
+	<ldswc-iconbutton more title="Settings" sprite="utility" icon="settings"></ldswc-iconbutton>
 	<ldswc-iconbutton more title="search" sprite="standard" icon="search"></ldswc-iconbutton>
 	</div>
 	<div class="slds-size_1-of-12" style="padding:0.1rem;background-color:#16325C">
@@ -81,6 +85,18 @@ require_once 'Smarty_setup.php';
 	</div>
 	<div class="slds-size_4-of-12">
 		<ldswc-popover open closeable nubbin="left" customHeaderTheme="success" header='<span><h2 class="slds-text-heading_medium">Manage your channels</h2></span>' footer='<div class="slds-grid slds-grid_vertical-align-center"><span class="slds-text-title">Step 2 of 4</span><button class="slds-button slds-button_brand slds-col_bump-left">Next</button></div>' body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></ldswc-popover>
+	</div>
+</div>
+
+<div class="slds-grid slds-m-around--medium">
+	<div class="slds-size_4-of-12">
+		<ldswc-expandablesection open title="This is the Header" body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat mi"></ldswc-expandablesection>
+	</div>
+	<div class="slds-size_4-of-12">
+		<ldswc-expandablesection title="This is the Header" body='<div class="slds-text-longform"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>'></ldswc-expandablesection>
+	</div>
+	<div class="slds-size_4-of-12">
+		<ldswc-expandablesection open uncollapsable title='<span><h2 class="slds-text-heading_medium">Manage your channels</h2></span>' body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></ldswc-expandablesection>
 	</div>
 </div>
 
