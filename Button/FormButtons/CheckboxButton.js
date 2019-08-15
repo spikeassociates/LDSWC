@@ -1,7 +1,6 @@
 import { LitElement, html } from '../../libs/lit-element/lit-element.js';
 import { joinClassNames, getAssistive } from '../../libs/ldswcutils/ldswcutils.js';
 import IconSVG from '../../Icon/IconSVG.js';
-import { ldswcconfig } from '../../ldswcconfig.js';
 
 export default class CheckboxButton extends LitElement {
 	static get properties() {
@@ -33,21 +32,16 @@ export default class CheckboxButton extends LitElement {
 		this.label = null;
 	}
 
-	getInput(classes) {
-		if (this.checked) {
-			return html`<input 
-				class=${joinClassNames(classes)}
-				id=${this.id}
-				type="checkbox"
-				value=${this.id}
-				checked />`;
-		} else {
-			return html`<input 
-				class=${joinClassNames(classes)}
-				id=${this.id}
-				type="checkbox"
-				value=${this.id} />`;
-		}
+	firstUpdated(changedProperties) {
+		this.addEventListener('click', this.toggleCheck);
+	}
+
+	toggleCheck(e) {
+		this.checked = !this.checked;
+	}
+
+	createRenderRoot() {
+		return this;
 	}
 
 	render() {
@@ -57,14 +51,17 @@ export default class CheckboxButton extends LitElement {
 		];
 
 	return html`
-<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <div class="slds-checkbox_add-button">
-	${this.getInput(sldsClasses)}
+	<input
+		class=${joinClassNames(sldsClasses)}
+		id=${this.id}
+		type="checkbox"
+		?checked="${this.checked}" >
 	<label class="slds-checkbox_faux" for=${this.id}>
 		${getAssistive(this.label)}
 	</label>
 </div>`;
 	};
-
 }
+
 customElements.define('ldswc-checkboxbutton', CheckboxButton);
