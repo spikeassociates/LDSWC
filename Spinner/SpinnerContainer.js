@@ -23,6 +23,10 @@ export default class SpinnerContainer extends LitElement {
 		//this.fixed = true;
 	}
 
+	createRenderRoot() {
+		return this;
+	}
+
 	render() {
 		//const otherattrs = getRestOfAttribs(this.attributes, this.constructor.properties);
 		
@@ -33,7 +37,6 @@ export default class SpinnerContainer extends LitElement {
 		];
 
 		return html`
-<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <div class=${joinClassNames(sldsClasses)}>
 <slot></slot>
 </div>`;
