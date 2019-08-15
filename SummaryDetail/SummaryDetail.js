@@ -28,10 +28,6 @@ export default class SummaryDetail extends LitElement {
 			 */
 			summary: { type: String },
 			/**
-			 * Renders custom title markup if provided. Receives title as an argument
-			 */
-			renderTitle: { type: String },
-			/**
 			 * Additional className for the expand icon
 			 */
 			iconButtonClassName: { type: String },
@@ -52,10 +48,12 @@ export default class SummaryDetail extends LitElement {
 	}
 
 	renderTitle() {
-		return html`
-		<h3 className="slds-text-heading_small slds-truncate">
-		${this.title}
-		</h3>`;
+		if (this.title.indexOf('<div ')!=-1 || this.title.indexOf('<span ')!=-1) {
+			var children = eval('html`'+this.title+'`');
+		} else {
+			var children = html`<h3 class="slds-text-heading_small slds-truncate">${this.title}</h3>`;
+		}
+		return children;
 	}
 
 	renderContent() {
@@ -74,28 +72,24 @@ export default class SummaryDetail extends LitElement {
 		];
 		const iconButtonClass = [
 			'slds-m-right_small',
+			'slds-summary-detail__action-icon',
 			this.iconButtonClassName
 		];
 		return html`
 			<div class=${joinClassNames(sldsClasses)}>
 				<ldswc-iconbutton
 					@click=${this.onOpen}
-					class=${joinClassNames(iconButtonClass)}
+					className=${joinClassNames(iconButtonClass)}
 					icon="switch"
 					sprite="utility"
 					title="open"
 				>
-					<ldswc-buttonicon
-					class="slds-summary-detail__action-icon"
-					icon="switch"
-					sprite="utility"
-					/>
 				</ldswc-iconbutton>
 				<div>
 				<div class="slds-summary-detail__title">
 					${this.renderTitle()}
 				</div>
-				${ html`
+				${html`
 					<div aria-hidden=${this.isOpen} class="slds-summary-detail__content">
 					${this.renderContent()}
 					</div>
