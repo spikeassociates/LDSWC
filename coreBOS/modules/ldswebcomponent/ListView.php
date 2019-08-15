@@ -24,6 +24,7 @@ require_once 'Smarty_setup.php';
 <script type="module" src="./include/ldswc/Timeline/index.js"></script>
 <script type="module" src="./include/ldswc/PageHeader/PageHeader.js"></script>
 <script type="module" src="./include/ldswc/Accordion/index.js"></script>
+<script type="module" src="./include/ldswc/SummaryDetail/index.js"></script>
 
 <ldswc-pageheader
 	title="Lightning Design System web components!!"
@@ -50,20 +51,26 @@ require_once 'Smarty_setup.php';
 <ldswc-badge theme="inverse" title="this is assistive" label="Some Badge text"></ldswc-badge>
 <ldswc-badge theme="lightest" title="this is assistive" label="Another Badge"></ldswc-badge>
 <div class="slds-grid">
-<div class="slds-size_1-of-12">
-<ldswc-checkboxbutton id="mimi" label="checkboxbutton" ></ldswc-checkboxbutton>
+	<div class="slds-size_1-of-12">
+	<ldswc-checkboxbutton id="mimi" label="checkboxbutton" ></ldswc-checkboxbutton>
+	</div>
+	<div class="slds-size_1-of-12">
+	<ldswc-iconbutton more title="Settings" sprite="utility" icon="settings"></ldswc-iconbutton>
+	</div>
+	<div class="slds-size_1-of-12">
+	<ldswc-iconbutton more title="search" sprite="standard" icon="search"></ldswc-iconbutton>
+	</div>
+	<div class="slds-size_1-of-12" style="padding:0.1rem;background-color:#16325C">
+	<ldswc-iconbutton flavor="inverse" more title="Settings" sprite="utility" icon="settings"></ldswc-iconbutton>
+	</div>
+	<div class="slds-size_4-of-12">
+	<ldswc-summarydetail isOpen title="Summary Title" summary="Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum ma"></ldswc-summarydetail>
+	</div>
+	<div class="slds-size_4-of-12">
+	<ldswc-summarydetail title='<div class="slds-grid"><h3 class="slds-text-heading_small slds-truncate slds-p-right_small" title="summary title">Summary Title</h3><ldswc-badge theme="lightest" title="this is assistive" label=" In Progress "></ldswc-badge></div><p>Additional information about this step</p>' summary="Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum ma"></ldswc-summarydetail>
+	</div>
 </div>
-<div class="slds-size_1-of-12">
-<ldswc-iconbutton more title="Settings" sprite="utility" icon="settings"></ldswc-iconbutton>
-</div>
-<div class="slds-size_1-of-12">
-<ldswc-iconbutton more title="search" sprite="standard" icon="search"></ldswc-iconbutton>
-</div>
-<div class="slds-size_1-of-12" style="padding:0.1rem;background-color:#16325C">
-<ldswc-iconbutton flavor="inverse" more title="Settings" sprite="utility" icon="settings"></ldswc-iconbutton>
-</div>
-</div>
-</div>
+
 <div class="slds-grid">
 <div class="slds-size_6-of-12">
 <ldswc-mediaobject figurePosition="left" title="media object title" center size="small" responsive
