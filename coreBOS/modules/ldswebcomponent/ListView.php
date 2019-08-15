@@ -20,6 +20,7 @@ require_once 'Smarty_setup.php';
 <script type="module" src="./include/ldswc/Button/IconButtons/IconButton.js"></script>
 <script type="module" src="./include/ldswc/Button/IconButtons/StatefulIconButton.js"></script>
 <script type="module" src="./include/ldswc/Button/FormButtons/CheckboxButton.js"></script>
+<script type="module" src="./include/ldswc/Button/ButtonGroups/ButtonGroup.js"></script>
 <script type="module" src="./include/ldswc/Badge/Badge.js"></script>
 <script type="module" src="./include/ldswc/MediaObject/MediaObject.js"></script>
 <script type="module" src="./include/ldswc/Timeline/index.js"></script>
@@ -46,6 +47,7 @@ require_once 'Smarty_setup.php';
 <ldswc-eqicon title="equalizer" animated></ldswc-eqicon>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <ldswc-spinner title="container" size="large" delayed></ldswc-spinner>
+<ldswc-button size="large" onclick="alert('first hi');" title="Say first hi"></ldswc-button>
 <ldswc-button sprite="standard" icon="search" size="large" onclick="alert('hi');" children="Say hi"></ldswc-button>
 <ldswc-button sprite="standard" icon="search" size="large" iconPosition="right" onclick="alert('bye');" children="Say bye"></ldswc-button>
 <ldswc-button sprite="standard" icon="search" size="large" iconPosition="right" title="this is a title"></ldswc-button>
@@ -53,7 +55,139 @@ require_once 'Smarty_setup.php';
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <ldswc-badge theme="inverse" title="this is assistive" label="Some Badge text"></ldswc-badge>
 <ldswc-badge theme="lightest" title="this is assistive" label="Another Badge"></ldswc-badge>
-<div class="slds-grid">
+<div class="slds-grid slds-m-around--medium">
+	<div class="slds-size_2-of-12">
+		<ldswc-buttongroup
+			children='[
+				{
+					"id":"btgrp1",
+					"flavor":"neutral",
+					"title":"Edit",
+					"href":"javascript:alert(1);"
+				},
+				{
+					"id":"btgrp2",
+					"flavor":"destructive",
+					"title":"Delete",
+					"href":"javascript:alert(2);"
+				},
+				{
+					"id":"btgrp3",
+					"flavor":"success",
+					"title":"Refresh",
+					"href":"javascript:alert(3);"
+				}
+			]'
+		></ldswc-buttongroup>
+	</div>
+	<div class="slds-size_2-of-12">
+		<ldswc-buttongroup
+			children='[
+				{
+					"id":"btgrp1",
+					"flavor":"neutral",
+					"title":"Edit",
+					"href":"javascript:alert(1);"
+				},
+				{
+					"id":"btgrp2",
+					"flavor":"destructive",
+					"title":"Delete",
+					"href":"javascript:alert(2);"
+				},
+				{
+					"id":"btgrp3",
+					"flavor":"success",
+					"title":"Refresh",
+					"href":"javascript:alert(3);"
+				}
+			]'
+			row
+		></ldswc-buttongroup>
+	</div>
+	<div class="slds-size_2-of-12">
+		<ldswc-buttongroup
+			children='[
+				{
+					"id":"btgrp1",
+					"flavor":"neutral",
+					"title":"Edit",
+					"href":"javascript:alert(1);"
+				},
+				{
+					"id":"btgrp2",
+					"flavor":"destructive",
+					"title":"Delete",
+					"href":"javascript:alert(2);"
+				},
+				{
+					"id":"btgrp3",
+					"flavor":"success",
+					"title":"Refresh",
+					"href":"javascript:alert(3);"
+				}
+			]'
+			list row
+		></ldswc-buttongroup>
+	</div>
+	<div class="slds-size_3-of-12">
+	<ldswc-buttongroup
+			children='[
+				{
+					"id":"btgrp1",
+					"flavor":"neutral",
+					"icon":"edit",
+					"iconPosition":"left",
+					"iconSize":"small",
+					"sprite":"utility",
+					"title":"Edit"
+				},
+				{
+					"id":"btgrp2",
+					"flavor":"destructive",
+					"icon":"delete",
+					"iconPosition":"right",
+					"iconSize":"x-small",
+					"sprite":"utility",
+					"title":"Delete"
+				},
+				{
+					"id":"btgrp3",
+					"flavor":"success",
+					"icon":"refresh",
+					"iconPosition":"right",
+					"iconSize":"medium",
+					"sprite":"utility",
+					"title":"Refresh"
+				}
+			]'
+			row
+		></ldswc-buttongroup>
+	</div>
+	<div class="slds-size_3-of-12">
+		<ldswc-buttongroup
+			children='[
+				{
+					"id":"btgrp1",
+					"flavor":"neutral",
+					"title":"Edit"
+				},
+				{
+					"id":"btgrp2",
+					"flavor":"destructive",
+					"title":"Delete"
+				},
+				{
+					"id":"btgrp3",
+					"flavor":"success",
+					"title":"Refresh"
+				}
+			]'
+			overflow
+		></ldswc-buttongroup>
+	</div>
+</div>
+<div class="slds-grid slds-m-around--medium">
 	<div class="slds-size_1-of-12">
 	<table><tr>
 	<td><ldswc-checkboxbutton id="mimi1" label="checkboxbutton" ></ldswc-checkboxbutton></td>
