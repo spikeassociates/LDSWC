@@ -5,43 +5,44 @@ import { ldswcconfig } from '../../ldswcconfig.js';
 import CheckboxButton from '../FormButtons/CheckboxButton.js';
 
 export default class ButtonGroup extends LitElement {
-  static get properties() {
-    return {
-      /**
-       * Optional additional classNames
-       */
-      className: { type: String },
-      /**
-       * Renders the button group as a list
-       */
-      list: { type: Boolean },
-      /**
-       * Renders the button group as a row of separate buttons
-       */
-      row: { type: Boolean },
-    }
-  }
+	static get properties() {
+		return {
+		/**
+		 * Optional additional classNames
+		 */
+		className: { type: String },
+		/**
+		 * Renders the button group as a list
+		 */
+		list: { type: Boolean },
+		/**
+		 * Renders the button group as a row of separate buttons
+		 */
+		row: { type: Boolean },
+		}
+	}
 
-  constructor() {
-    super();
-    this.className = null;
-    this.list = null;
-    this.row = null;
-  }
+	constructor() {
+		super();
+		this.className = null;
+		this.list = null;
+		this.row = null;
+	}
 
-  render() {
-    const sldsClasses = [
-      'slds-button-group',
-      'slds-button-group-list',
-      'slds-button-group-row',
-      this.className
-    ];
+	render() {
+		const sldsClasses = [
+			'slds-button-group',
+			'slds-button-group-list',
+			'slds-button-group-row',
+			this.className
+		];
 
-    return html`
+	return html`
 <link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <div class=${joinClassNames(sldsClasses)} role="group">
 <slot></slot>
 </div>`;
-  };
+	};
 }
+
 customElements.define('ldswc-buttongroup', ButtonGroup);

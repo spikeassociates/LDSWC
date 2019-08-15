@@ -4,66 +4,67 @@ import IconSVG from '../../Icon/IconSVG.js';
 import { ldswcconfig } from '../../ldswcconfig.js';
 
 export default class CheckboxButton extends LitElement {
-  static get properties() {
-    return {
-      /**
-       * Optional additional className
-       */
-      className: { type: String },
-      /**
-       * Checkbox state
-       */
-      checked: { type: Boolean },
-      /**
-       * `id` of input. Links input and label
-       */
-      id: { type: String },
-      /**
-       * Input label, will be present for screen readers
-       */
-      label: { type: String },
-    }
-  }
+	static get properties() {
+		return {
+		/**
+		 * Optional additional className
+		 */
+		className: { type: String },
+		/**
+		 * Checkbox state
+		 */
+		checked: { type: Boolean },
+		/**
+		 * `id` of input. Links input and label
+		 */
+		id: { type: String },
+		/**
+		 * Input label, will be present for screen readers
+		 */
+		label: { type: String },
+		}
+	}
 
-  constructor() {
-    super();
-    this.checked = null;
-    this.className = null;
-    this.id = null;
-    this.label = null;
-  }
-  getInput(classes) {
-    if (this.checked) {
-      return html`<input 
-      class=${joinClassNames(classes)}
-      id=${this.id}
-      type="checkbox"
-      value=${this.id}
-      checked/>`;
-    } else {
-      return html`<input 
-      class=${joinClassNames(classes)}
-      id=${this.id}
-      type="checkbox"
-      value=${this.id}
-      />`;
-    }
-  }
+	constructor() {
+		super();
+		this.checked = null;
+		this.className = null;
+		this.id = null;
+		this.label = null;
+	}
 
-  render() {
-    const sldsClasses = [
-      'slds-assistive-text',
-      this.className,
-    ];
+	getInput(classes) {
+		if (this.checked) {
+			return html`<input 
+				class=${joinClassNames(classes)}
+				id=${this.id}
+				type="checkbox"
+				value=${this.id}
+				checked />`;
+		} else {
+			return html`<input 
+				class=${joinClassNames(classes)}
+				id=${this.id}
+				type="checkbox"
+				value=${this.id} />`;
+		}
+	}
 
-    return html`
+	render() {
+		const sldsClasses = [
+			'slds-assistive-text',
+			this.className,
+		];
+
+	return html`
 <link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
-            <div class="slds-checkbox_add-button">
-                  ${this.getInput(sldsClasses)}
-                <label class="slds-checkbox_faux" for=${this.id}>
-                  ${getAssistive(this.label)}
-                </label>
-            </div>`;
-  };
+<div class="slds-checkbox_add-button">
+	${this.getInput(sldsClasses)}
+	<label class="slds-checkbox_faux" for=${this.id}>
+		${getAssistive(this.label)}
+	</label>
+</div>`;
+	};
+
 }
 customElements.define('ldswc-checkboxbutton', CheckboxButton);
