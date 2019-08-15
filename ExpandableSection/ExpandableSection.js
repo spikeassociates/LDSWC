@@ -1,6 +1,5 @@
 import { LitElement, html } from '../libs/lit-element/lit-element.js';
 import {joinClassNames} from '../libs/ldswcutils/ldswcutils.js';
-import {ldswcconfig} from '../ldswcconfig.js';
 import Button from '../Button/Base/Button.js';
 import ButtonIcon from '../Button/Base/ButtonIcon.js';
 
@@ -16,10 +15,6 @@ export default class ExpandableSection extends LitElement {
 			 */
 			open: { type: Boolean },
 			/**
-			 * section should start open
-			 */
-			defaultOpen: { type: Boolean },
-			/**
 			 * uncollapsable
 			 */
 			uncollapsable: { type: Boolean },
@@ -31,21 +26,46 @@ export default class ExpandableSection extends LitElement {
 			 * section title
 			 */
 			title: { type: String },
+			/**
+			 * section body
+			 */
+			body: { type: String },
 		}
 	}
 
 	constructor() {
 		super();
 		this.className = null;
-		this.open = null;
-		this.defaultOpen = false;
+		this.open = false;
 		this.uncollapsable = false;
 		this.id = '';
 		this.title = '';
 	}
 
+	createRenderRoot() {
+		return this;
+	}
+
 	toggleSection(e) {
 		this.open = !this.open;
+	}
+
+	renderTitle() {
+		if (this.title.indexOf('<div')!=-1 || this.title.indexOf('<span')!=-1) {
+			var children = eval('html`'+this.title+'`');
+		} else {
+			var children = html`${this.title}`;
+		}
+		return children;
+	}
+
+	renderContent() {
+		if (this.body.indexOf('<div')!=-1 || this.body.indexOf('<span')!=-1) {
+			var children = eval('html`'+this.body+'`');
+		} else {
+			var children = html`${this.body}`;
+		}
+		return children;
 	}
 
 	render() {
@@ -59,35 +79,31 @@ export default class ExpandableSection extends LitElement {
 			'slds-section__title',
 			{ 'slsds-theme_shade': this.uncollapsable}
 		];
+		const mtitle = this.renderTitle();
 		return html`
-<link rel="stylesheet" href="${ldswcconfig.ldsBasePath}/styles/salesforce-lightning-design-system.css">
 <div class=${joinClassNames(sldsClasses)}>
 	<h3 class=${joinClassNames(headerClasses)}>
 	${this.uncollapsable
 	?
-		html`<span class="slds-truncate slds-p-horizontal_small" title=${this.title}>${this.title}</span>`
+		html`<span class="slds-truncate slds-p-horizontal_small" title=${mtitle}>${mtitle}</span>`
 	:
 		html`
-			<ldswc-button
-			aria-controls=${this.id}
-			aria-expanded=${isOpen || this.open}
-			className="slds-section__title-action"
-			@click=${this.toggleSection}
-			title=${this.title}
-			>
-			<ldswc-buttonicon
+			<ldswc-iconbutton
+				aria-controls=${this.id}
+				aria-expanded=${isOpen || this.open}
+				aria-hidden="true"
+				className="slds-section__title-action"
+				@click=${this.toggleSection}
+				title=${this.title}
 				position="left"
 				icon=${isOpen || this.open ? 'chevrondown' : 'chevronright'}
 				sprite="utility"
-				aria-hidden="true"
-			>
-			</ldswc-buttonicon>
-			<span class="slds-truncate">${this.title}</span>
-			</ldswc-button>`
+			></ldswc-iconbutton>
+			<span class="slds-truncate" title="${mtitle}">${mtitle}</span>`
 		}
 	</h3>
 	<div aria-hidden=${!this.open} class="slds-section__content" id=${this.id}>
-		<slot></slot>
+	${this.renderContent()}
 	</div>
 </div>`;
 	}
