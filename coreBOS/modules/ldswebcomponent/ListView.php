@@ -55,7 +55,10 @@ require_once 'Smarty_setup.php';
 <ldswc-badge theme="lightest" title="this is assistive" label="Another Badge"></ldswc-badge>
 <div class="slds-grid">
 	<div class="slds-size_1-of-12">
-	<ldswc-checkboxbutton id="mimi" label="checkboxbutton" ></ldswc-checkboxbutton>
+	<table><tr>
+	<td><ldswc-checkboxbutton id="mimi1" label="checkboxbutton" ></ldswc-checkboxbutton></td>
+	<td><ldswc-checkboxbutton id="mimi2" label="checkboxbutton" checked></ldswc-checkboxbutton></td>
+	</tr></table>
 	</div>
 	<div class="slds-size_1-of-12">
 	<ldswc-statefuliconbutton icon="like" sprite="utility" size="small" onClick="console.log('like button clicked');"></ldswc-statefuliconbutton>
