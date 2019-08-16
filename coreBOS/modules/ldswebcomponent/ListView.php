@@ -10,6 +10,7 @@
 include_once 'vtlib/Vtiger/Module.php';
 require_once 'Smarty_setup.php';
 ?>
+<script type="module" src="./include/ldswc/ClickOutside/ClickOutside.js"></script>
 <script type="module" src="./include/ldswc/Icon/Icon.js"></script>
 <script type="module" src="./include/ldswc/Icon/ScoreIcon.js"></script>
 <script type="module" src="./include/ldswc/Icon/StrengthIcon.js"></script>
@@ -311,6 +312,9 @@ require_once 'Smarty_setup.php';
 			]'
 			row icons
 		></ldswc-buttongroup>
+	</div>
+	<div class="slds-size_2-of-12">
+	<ldswc-clickoutside onclickoutside='ClickOutsideMyTestDiv' handleEsc style="padding:15px;"><div style="padding:0.5rem;background:#16325c;color:white;">Click outside of this span</div></ldswc-clickoutside>
 	</div>
 </div>
 <div class="slds-grid slds-m-around--medium">
@@ -665,6 +669,9 @@ ldswcproperties.accordion.accstory1.sumclickfunction = function(e) { console.log
 ldswcproperties.popover = {};
 ldswcproperties.popover.popovermiddle = {};
 ldswcproperties.popover.popovermiddle.popoverclosefunction = function(e) { console.log(e); alert('popover close click on '+e.target.id)};
+window.ldswcproperties.ClickOutside = {};
+window.ldswcproperties.ClickOutside['ClickOutsideMyTestDiv'] = {};
+window.ldswcproperties.ClickOutside['ClickOutsideMyTestDiv']['onclickoutside'] = function () {alert('you clicked outside'); };
 </script>
 <div class="slds-grid slds-gutters">
 <div class="slds-col slds-size_6-of-12">
