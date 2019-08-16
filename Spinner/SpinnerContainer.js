@@ -14,7 +14,7 @@ export default class SpinnerContainer extends LitElement {
 			 * needed if dynamically loading portions of component after spinner is showing
 			 */
 			fixed: { type: Boolean },
-		}
+		};
 	}
 
 	constructor() {
@@ -29,13 +29,11 @@ export default class SpinnerContainer extends LitElement {
 
 	render() {
 		//const otherattrs = getRestOfAttribs(this.attributes, this.constructor.properties);
-		
 		const sldsClasses = [
 			'slds-spinner_container',
 			{ 'slds-is-fixed': this.fixed },
 			this.className
 		];
-
 		return html`
 <div class=${joinClassNames(sldsClasses)}>
 <slot></slot>

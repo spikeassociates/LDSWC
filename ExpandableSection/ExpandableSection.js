@@ -30,7 +30,7 @@ export default class ExpandableSection extends LitElement {
 			 * section body
 			 */
 			body: { type: String },
-		}
+		};
 	}
 
 	constructor() {
@@ -83,10 +83,9 @@ export default class ExpandableSection extends LitElement {
 		return html`
 <div class=${joinClassNames(sldsClasses)}>
 	<h3 class=${joinClassNames(headerClasses)}>
-	${this.uncollapsable
-	?
+	${this.uncollapsable ?
 		html`<span class="slds-truncate slds-p-horizontal_small" title=${mtitle}>${mtitle}</span>`
-	:
+		:
 		html`
 			<ldswc-iconbutton
 				aria-controls=${this.id}

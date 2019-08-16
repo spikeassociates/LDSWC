@@ -15,7 +15,7 @@ export function getRestOfAttribs(allAttribs, controlledAttribs) {
 	let attrs = [];
 	let ctrled = Object.keys(controlledAttribs).map(k => k.toLowerCase());
 	Array.prototype.forEach.call(allAttribs, attr => {
-		if (ctrled.indexOf(attr.name)==-1){
+		if (ctrled.indexOf(attr.name)==-1) {
 			attrs.push(attr.name + '=' + attr.value +'');
 		}
 	});
@@ -51,7 +51,9 @@ export function getAssistiveText(assist) {
 }
 
 export function applyDecorators(flavor, infix = null) {
-	if (!flavor) return null;
+	if (!flavor) {
+		return null;
+	}
 	const prefix = !infix ? 'slds-' : `slds-${infix}_`;
 	return Array.isArray(flavor) ? flavor.map(f => `${prefix}${f}`) : `${prefix}${flavor}`;
 }

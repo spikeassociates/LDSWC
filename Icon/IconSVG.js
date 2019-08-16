@@ -1,4 +1,4 @@
-import { LitElement, html, svg } from '../libs/lit-element/lit-element.js';
+import { LitElement, svg } from '../libs/lit-element/lit-element.js';
 import {joinClassNames} from '../libs/ldswcutils/ldswcutils.js';
 import {ldswcconfig} from '../ldswcconfig.js';
 
@@ -25,7 +25,7 @@ export default class IconSVG extends LitElement {
 			 * removes slds_icon class
 			 */
 			isButton: { type: Boolean },
-		}
+		};
 	}
 
 	constructor() {

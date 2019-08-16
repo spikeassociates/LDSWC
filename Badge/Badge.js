@@ -27,7 +27,7 @@ export default class Badge extends LitElement {
 			 * Optional title that will be rendered as assistive-text
 			 */
 			title: { type: String },
-		}
+		};
 	}
 
 	constructor() {
@@ -44,7 +44,6 @@ export default class Badge extends LitElement {
 
 	render() {
 		//const otherattrs = getRestOfAttribs(this.attributes, this.constructor.properties);
-		
 		const sldsClasses = [
 			'slds-badge',
 			...getThemeClass(this.theme),

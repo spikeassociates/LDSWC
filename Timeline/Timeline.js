@@ -10,7 +10,7 @@ export default class Timeline extends LitElement {
 			 */
 			className: { type: String },
 			contents: { type: Object },
-		}
+		};
 	}
 
 	constructor() {

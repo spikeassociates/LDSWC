@@ -23,7 +23,7 @@ export default class ScoreIcon extends LitElement {
 			 * Sets a `title` tooltip. Also sets `assistiveText` if prop not present
 			 */
 			title: { type: String },
-		}
+		};
 	}
 
 	constructor() {

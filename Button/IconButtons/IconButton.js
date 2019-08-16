@@ -21,7 +21,7 @@ export default class IconButton extends LitElement {
 			/**
 			 * Renders a border. Can be `true` to render a transparent border or filled to render a visible border
 			 */
-			border: { type: String },//oneOf([true, 'filled']),
+			border: { type: String }, //oneOf([true, 'filled']),
 			/**
 			 * Adjust icon sizes. Used to render transparent icons with padding
 			 */
@@ -46,7 +46,7 @@ export default class IconButton extends LitElement {
 			 * Title for hover and screenreaders
 			 */
 			title: { type: String },
-		}
+		};
 	}
 
 	constructor() {
@@ -99,6 +99,6 @@ export default class IconButton extends LitElement {
 				${this.title && getAssistive(this.title)}
 			</ldswc-button >
 		`;
-	};
+	}
 }
 customElements.define('ldswc-iconbutton', IconButton);

@@ -36,7 +36,7 @@ export default class Accordion extends LitElement {
 			 * function for the button on the right of summary. must be in the window global scope, inside the ldswcproperties object
 			 */
 			summaryOnClick: { type: String },
-		}
+		};
 	}
 
 	constructor() {
@@ -111,25 +111,24 @@ export default class Accordion extends LitElement {
 		if (this.open === null && this.state === null) { // controlled
 			if (this.defaultOpen) {
 				if (typeof defaultOpen === 'string') {
-					this.state = { activeSections: [defaultOpen] };
+					this.state = { activeSections: [this.defaultOpen] };
 				} else { // is array of strings
-					this.state = { activeSections: defaultOpen };
+					this.state = { activeSections: this.defaultOpen };
 				}
 			} else {
 				this.state = { activeSections: [this.children[0].id] };
 			}
 		}
 
-	if (this.styled) {
-		return html`
+		if (this.styled) {
+			return html`
 <div class="slds-card">
 <ul class=${joinClassNames(sldsClasses)}>
 	${this.renderSections()}
 </ul>
 </div>`;
-	}
-
-return html`
+		}
+		return html`
 <ul class=${joinClassNames(sldsClasses)}>
 ${this.renderSections()}
 </ul>`;
@@ -137,4 +136,3 @@ ${this.renderSections()}
 }
 
 customElements.define('ldswc-accordion', Accordion);
-

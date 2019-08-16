@@ -46,7 +46,7 @@ export default class Button extends LitElement {
 			 * Optional href, renders as `a` when set
 			 */
 			href: { type: String },
-		}
+		};
 	}
 
 	constructor() {
@@ -96,11 +96,10 @@ export default class Button extends LitElement {
 		const isShortcut = !!this.icon && !!this.sprite;
 		const isRightShortcut = isShortcut && position !== 'left';
 
-		return html`
-${this.href ?
-	html`<a class=${joinClassNames(sldsClasses)} href=${this.href} title=${this.title}>${this.getRightShortcut(isRightShortcut, isShortcut, position)}</a>`:
-	html`<button class=${joinClassNames(sldsClasses)} title=${this.title}>${this.getRightShortcut(isRightShortcut, isShortcut, position)}</button>`
-}`;
+		return html`${this.href ?
+			html`<a class=${joinClassNames(sldsClasses)} href=${this.href} title=${this.title}>${this.getRightShortcut(isRightShortcut, isShortcut, position)}</a>`:
+			html`<button class=${joinClassNames(sldsClasses)} title=${this.title}>${this.getRightShortcut(isRightShortcut, isShortcut, position)}</button>`
+		}`;
 	}
 }
 

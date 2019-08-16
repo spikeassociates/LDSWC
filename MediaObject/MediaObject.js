@@ -45,7 +45,7 @@ export default class MediaObject extends LitElement {
 			 *  Figure definition
 			 */
 			figure: { type: String },
-		}
+		};
 	}
 
 	constructor() {
@@ -68,11 +68,11 @@ export default class MediaObject extends LitElement {
 		if (figurePosition == 'right') {
 			return html`
 			<div class=${joinClassNames(bodyClasses)} title=${this.title}>${mbd}</div>
-			<div class=${joinClassNames(figureClasses)}>${fig}</div>`
+			<div class=${joinClassNames(figureClasses)}>${fig}</div>`;
 		} else {
 			return html`
 			<div class=${joinClassNames(figureClasses)}>${fig}</div>
-			<div class=${joinClassNames(bodyClasses)} title=${this.title}>${mbd}</div>`
+			<div class=${joinClassNames(bodyClasses)} title=${this.title}>${mbd}</div>`;
 		}
 	}
 
@@ -88,20 +88,17 @@ export default class MediaObject extends LitElement {
 			{ [`slds_media_${this.size}`]: !!this.size},
 			this.className
 		];
-		
 		const bodyClasses = [
 			'slds-media__body',
 			{ 'slds--truncate': this.truncate },
 			this.bodyClassName
 		];
-
 		const figureClasses = this.figurePosition == 'right' ? [
 			'slds-media__figure',
 			'slds-media__figure_reverse'
 		] : [
 			'slds-media__figure'
 		];
-
 		return html`
 <div class=${joinClassNames(sldsClasses)}>${this.renderFigure(this.figurePosition, figureClasses, bodyClasses)}</div>
 `;

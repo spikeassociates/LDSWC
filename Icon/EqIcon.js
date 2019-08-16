@@ -21,7 +21,7 @@ export default class EqIcon extends LitElement {
 			 * indicate if you want to animate or not
 			 */
 			animated: { type: Boolean },
-		}
+		};
 	}
 
 	constructor() {

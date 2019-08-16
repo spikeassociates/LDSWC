@@ -22,7 +22,7 @@ export default class SummaryDetail extends LitElement {
 			/**
 			 * Title to be used by the renderTitle function
 			 */
-			title: { type: String }, 
+			title: { type: String },
 			/**
 			 * Summary of the component
 			 */
@@ -31,7 +31,7 @@ export default class SummaryDetail extends LitElement {
 			 * Additional className for the expand icon
 			 */
 			iconButtonClassName: { type: String },
-		}
+		};
 	}
 
 	constructor() {

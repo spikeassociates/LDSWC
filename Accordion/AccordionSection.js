@@ -35,7 +35,7 @@ export default class AccordionSection extends LitElement {
 			 * function for the button on the right of summary
 			 */
 			summaryOnClick: { type: String },
-		}
+		};
 	}
 
 	constructor() {

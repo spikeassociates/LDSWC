@@ -33,7 +33,7 @@ export default class StatefulIconButton extends LitElement {
 			 * title
 			 */
 			title: { type: String },
-		}
+		};
 	}
 	constructor() {
 		super();
@@ -72,7 +72,7 @@ export default class StatefulIconButton extends LitElement {
 				size=${this.size}
 				title=${this.title}
 			/>`;
-	};
+	}
 }
 
 customElements.define('ldswc-statefuliconbutton', StatefulIconButton);

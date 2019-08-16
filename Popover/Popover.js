@@ -53,7 +53,7 @@ export default class Popover extends LitElement {
 			 * themes: alt-inverse, default, error, info, inverse, offline, shade, success, warning
 			 */
 			theme: { type: String },
-		}
+		};
 	}
 
 	constructor() {

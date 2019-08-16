@@ -34,7 +34,7 @@ export default class Icon extends LitElement {
 			div: { type: Boolean },
 			/** Descriptive Title */
 			title: { type: String },
-		}
+		};
 	}
 
 	constructor() {
@@ -74,12 +74,10 @@ export default class Icon extends LitElement {
 			{ [`${backgroundClass}`]: this.background !== 'false' },
 			this.className
 		];
-	
-		return html`
-${this.div ?
-	html`<div class=${joinClassNames(sldsClasses)} title=${this.title}>${this.iconTemplate}</div>`:
-	html`<span class=${joinClassNames(sldsClasses)} title=${this.title}>${this.iconTemplate}</span>`}
-`;
+		return html`${this.div ?
+			html`<div class=${joinClassNames(sldsClasses)} title=${this.title}>${this.iconTemplate}</div>`:
+			html`<span class=${joinClassNames(sldsClasses)} title=${this.title}>${this.iconTemplate}</span>`}
+		`;
 	}
 }
 

@@ -1,27 +1,26 @@
 import { LitElement, html } from '../../libs/lit-element/lit-element.js';
 import { joinClassNames, getAssistive } from '../../libs/ldswcutils/ldswcutils.js';
-import IconSVG from '../../Icon/IconSVG.js';
 
 export default class CheckboxButton extends LitElement {
 	static get properties() {
 		return {
-		/**
-		 * Optional additional className
-		 */
-		className: { type: String },
-		/**
-		 * Checkbox state
-		 */
-		checked: { type: Boolean },
-		/**
-		 * `id` of input. Links input and label
-		 */
-		id: { type: String },
-		/**
-		 * Input label, will be present for screen readers
-		 */
-		label: { type: String },
-		}
+			/**
+			 * Optional additional className
+			 */
+			className: { type: String },
+			/**
+			 * Checkbox state
+			 */
+			checked: { type: Boolean },
+			/**
+			 * `id` of input. Links input and label
+			 */
+			id: { type: String },
+			/**
+			 * Input label, will be present for screen readers
+			 */
+			label: { type: String },
+		};
 	}
 
 	constructor() {
@@ -50,7 +49,7 @@ export default class CheckboxButton extends LitElement {
 			this.className,
 		];
 
-	return html`
+		return html`
 <div class="slds-checkbox_add-button">
 	<input
 		class=${joinClassNames(sldsClasses)}
@@ -61,7 +60,7 @@ export default class CheckboxButton extends LitElement {
 		${getAssistive(this.label)}
 	</label>
 </div>`;
-	};
+	}
 }
 
 customElements.define('ldswc-checkboxbutton', CheckboxButton);

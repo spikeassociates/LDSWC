@@ -25,7 +25,7 @@ export default class StrengthIcon extends LitElement {
 			 * indicate if you want to animate or not
 			 */
 			animated: { type: Boolean },
-		}
+		};
 	}
 
 	constructor() {

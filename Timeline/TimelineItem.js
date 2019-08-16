@@ -38,7 +38,7 @@ export default class TimelineItem extends LitElement {
 			contentstrigger: { type: String },
 			contentstimeline: { type: String },
 			contentsdetail: { type: String },
-		}
+		};
 	}
 
 	constructor() {
@@ -106,7 +106,7 @@ export default class TimelineItem extends LitElement {
 			'slds-icon_container',
 			'slds-timeline__icon',
 			this.iconClasses
-		]
+		];
 		const mfig = '<div><ldswc-button'
 			+' title="'+this.buttonTitle+'"'
 			+' flavor="'+this.buttonFlavor+'"'

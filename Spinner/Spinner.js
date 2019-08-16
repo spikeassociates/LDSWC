@@ -33,7 +33,7 @@ export default class Spinner extends LitElement {
 			 * spinner sizes: xx-small, x-small, small, medium, large
 			 */
 			size: { type: String },
-		}
+		};
 	}
 
 	constructor() {
@@ -57,7 +57,7 @@ export default class Spinner extends LitElement {
 	<span class="slds-assistive-text">${this.assistiveLabel}</span>
 	<div class="slds-spinner__dot-a" ></div>
 	<div class="slds-spinner__dot-b" ></div>
-</div>`
+</div>`;
 	}
 
 	render() {

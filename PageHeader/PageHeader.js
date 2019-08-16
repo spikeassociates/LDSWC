@@ -35,7 +35,7 @@ export default class PageHeader extends LitElement {
 			 *  Figure definition
 			 */
 			figure: { type: String },
-		}
+		};
 	}
 
 	constructor() {
@@ -80,7 +80,7 @@ export default class PageHeader extends LitElement {
 					</div>
 				</div>
 			</div>`;
-	};
+	}
 }
 
 customElements.define('ldswc-pageheader', PageHeader);

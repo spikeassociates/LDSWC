@@ -30,7 +30,7 @@ export default class ButtonIcon extends LitElement {
 			 * icon sprite name
 			 */
 			sprite: { type: String }, // isRequired
-		}
+		};
 	}
 
 	constructor() {
