@@ -81,6 +81,24 @@ export default class ControlledMenu extends LitElement {
 			 * length of the menu box. 'small', 'medium', or 'large'
 			 */
 			size: {type: String},
+			/**
+			 * if we toggle menu on button hover
+			 */
+			toggleOnHover: {type: Boolean},
+			/**
+			 * Called when menu is opened/closed
+			 */
+			onToggle: {
+				converter: (value, type) => {
+					// `value` is a string
+					// Convert it to a value of type `type` and return it
+					if (window.ldswcproperties.Menu[value] && typeof window.ldswcproperties.Menu[value]['onToggle'] === 'function') {
+						return window.ldswcproperties.Menu[value]['onToggle'];
+					} else {
+						return null;
+					}
+				}
+			}, // function,
 		};
 	}
 
@@ -97,10 +115,52 @@ export default class ControlledMenu extends LitElement {
 		this.renderHeader = null;
 		this.renderClosedDropdown = false;
 		this.size ='small';
+		this.toggleOnHover=false;
+		this.onToggle = null;
+		this.menuid = getUniqueHash('inttglmnuf', Math.floor((Math.random() * 100) + 1));
 	}
 
 	createRenderRoot() {
 		return this;
+	}
+
+	firstUpdated() {
+		super.firstUpdated();
+		document.getElementById(this.menuid).addEventListener('click', this.toggle.bind(this), false);
+		if (this.toggleOnHover) {
+			document.getElementById(this.menuid).parentNode.addEventListener('mouseenter', this.openMenu.bind(this), false);
+			document.getElementById(this.menuid).parentNode.addEventListener('mouseleave', this.closeMenu.bind(this), false);
+		}
+	}
+
+	disconnectedCallback() {
+		document.getElementById(this.menuid).addEventListener('click', this.toggle, false);
+		if (this.toggleOnHover) {
+			document.getElementById(this.menuid).parentNode.removeEventListener('mouseenter', this.openMenu, false);
+			document.getElementById(this.menuid).parentNode.removeEventListener('mouseleave', this.closeMenu, false);
+		}
+		super.disconnectedCallback();
+	}
+
+	openMenu() {
+		this.isOpen = true;
+		if (this.onToggle) {
+			this.onToggle(this.isOpen);
+		}
+	}
+
+	closeMenu() {
+		this.isOpen = false;
+		if (this.onToggle) {
+			this.onToggle(this.isOpen);
+		}
+	}
+
+	toggle() {
+		if (this.onToggle) {
+			this.onToggle(!this.isOpen);
+		}
+		this.isOpen = !this.isOpen;
 	}
 
 	handleItemClick(event) {
@@ -168,9 +228,13 @@ export default class ControlledMenu extends LitElement {
 			{ [`slds-dropdown_length-with-icon-${this.heightIcon}`]: this.heightIcon },
 			'slds-dropdown__list',
 		];
+		var btnelem = '';
+		if (window.ldswcproperties.Menu[this.button]['button'] != undefined) {
+			btnelem = '<span id="'+this.menuid+'">'+window.ldswcproperties.Menu[this.button]['button']+'</span>';
+		}
 		return html`
 <div class=${joinClassNames(wrapperClasses)}>
-${eval('html`'+window.ldswcproperties.Menu[this.button]['button']+'`')}
+${eval('html`'+btnelem+'`')}
 ${(this.isOpen || this.renderClosedDropdown) ? html`
 	<div class=${joinClassNames(dropdownClasses)}>
 	${this.renderHeader && this.renderHeader()}

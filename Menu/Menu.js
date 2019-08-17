@@ -23,7 +23,11 @@ export default class Menu extends LitElement {
 			/**
 			 * Called when menu is opened/closed
 			 */
-			onToggle: {type: String}, // function,
+			onToggle: {type: String},
+			/**
+			 * if we toggle menu on button hover
+			 */
+			toggleOnHover: {type: Boolean},
 		};
 	}
 
@@ -31,7 +35,8 @@ export default class Menu extends LitElement {
 		super();
 		this.closeOnClickOutside = false;
 		this.open = false;
-		this.onToggle = null;
+		this.onToggle = '';
+		this.toggleOnHover = false;
 	}
 
 	createRenderRoot() {
@@ -42,26 +47,22 @@ export default class Menu extends LitElement {
 		this.open = false;
 	}
 
-	toggle() {
-		if (this.onToggle) {
-			this.onToggle(!this.open);
-		}
-		this.open = !this.open;
-	}
-
 	render() {
-		let btnelem = window.ldswcproperties.Menu[this.button]['button'];
-		let firstSpace = btnelem.indexOf(' ');
-		btnelem = btnelem.substr(0, firstSpace)+' @click="${this.handleButtonClick}" '+btnelem.substr(firstSpace+1);
-		window.ldswcproperties.Menu[this.button]['button']=btnelem;
+		if (window.ldswcproperties.ClickOutside==undefined) {
+			window.ldswcproperties.ClickOutside = {};
+		}
+		window.ldswcproperties.ClickOutside[this.menuid] = {};
+		window.ldswcproperties.ClickOutside[this.menuid]['onclickoutside'] = this.onClickOutside.bind(this);
 		const otherattrs = getRestOfAttribs(this.attributes, this.constructor.properties);
 		return html`
-<ldswc-clickoutside onClickOutside=${this.onClickOutside}>
+<ldswc-clickoutside onclickoutside=${this.menuid}>
 	<ldswc-controlledmenu
 		button=${this.button}
 		@menuButtonClicked=${this.toggle}
 		?isOpen=${this.open}
 		addProps=${addProps(otherattrs)}
+		onToggle=${this.onToggle}
+		?toggleOnHover=${this.toggleOnHover}
 	></ldswc-controlledmenu>
 </ldswc-clickoutside>`;
 	}
