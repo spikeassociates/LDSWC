@@ -12,22 +12,22 @@ import { html } from '../lit-html/lit-html.js';
 export * from './theme.js';
 
 export function getRestOfAttribs(allAttribs, controlledAttribs) {
-	let attrs = [];
+	let attrs = {};
 	let ctrled = Object.keys(controlledAttribs).map(k => k.toLowerCase());
 	Array.prototype.forEach.call(allAttribs, attr => {
 		if (ctrled.indexOf(attr.name)==-1) {
-			attrs.push(attr.name + '=' + attr.value +'');
+			attrs[attr.name] = attr.value;
 		}
 	});
-	return attrs.join(' ');
+	return attrs;
 }
 
 export function ldsIsEmpty(value) {
-	return (value == null || value == 'null' || value == 'undefined' || value == 'none');
+	return (value == null || value == false || value == 'null' || value == 'undefined' || value == 'none');
 }
 
 export function ldsIsTruthy(value) {
-	return (value!==null && value!=='false' && value!=='0');
+	return (value!==undefined && value!==null && value!=='false' && value!=='0');
 }
 
 export function joinClassNames(classes) {
