@@ -3,8 +3,6 @@ import {joinClassNames, ldsIsTruthy, ldsIsEmpty} from '../libs/ldswcutils/ldswcu
 import {ldswcconfig} from '../ldswcconfig.js';
 import IconSVG from '../Icon/IconSVG.js';
 
-const nonCapturing = { pointerEvents: 'none' };
-
 const leftIconElem = (icon, sprite, flavor, alwaysDisplay) => {
 	const iconClasses = [
 		{ 'slds-icon_selected': !alwaysDisplay },
@@ -33,7 +31,6 @@ const rightIconElem = (icon, sprite, flavor) => {
 		icon=${icon}
 		size="x-small"
 		sprite=${sprite}
-		style=${nonCapturing}
 	></ldswc-iconsvg>`;
 };
 
@@ -74,6 +71,20 @@ export default class MenuItem extends LitElement {
 			 */
 			selected: { type: Boolean},
 			/**
+			 * Called when menuitem is selected/unselected
+			 */
+			onSelected: {
+				converter: (value, type) => {
+					// `value` is a string
+					// Convert it to a value of type `type` and return it
+					if (window.ldswcproperties.Menu[value] && typeof window.ldswcproperties.Menu[value]['onSelected'] === 'function') {
+						return window.ldswcproperties.Menu[value]['onSelected'];
+					} else {
+						return null;
+					}
+				}
+			}, // function,
+			/**
 			 * id should be set by parent element
 			 */
 			id: { type: String },
@@ -81,6 +92,10 @@ export default class MenuItem extends LitElement {
 			 * Menu label
 			 */
 			title: { type: String },
+			/**
+			 * Action link
+			 */
+			href: { type: String },
 		};
 	}
 
@@ -98,12 +113,26 @@ export default class MenuItem extends LitElement {
 		this.rightIconsprite = 'utility';
 		this.rightIconflavor = null;
 		this.selected = false;
+		this.onSelected = null;
 		this.title = null;
+		this.href = '';
 		this.id = null;
 	}
 
 	createRenderRoot() {
 		return this;
+	}
+
+	firstUpdated() {
+		super.firstUpdated();
+		this.addEventListener('click', this.toggle.bind(this), false);
+	}
+
+	toggle() {
+		if (this.onSelected) {
+			this.onSelected(!this.isOpen);
+		}
+		this.selected = !this.selected;
 	}
 
 	render() {
@@ -128,10 +157,10 @@ export default class MenuItem extends LitElement {
 		aria-checked=${this.selected}
 		data-value=${this.datavalue}
 		role=${role}
+		href=${this.href}
 	>
 		<span
 			class="slds-truncate"
-			style=${nonCapturing}
 			title=${assistiveTitle}
 		>
 			${ldsIsTruthy(this.leftIconicon) ? leftIconElem(this.leftIconicon, this.leftIconsprite, this.leftIconflavor, this.leftIconalwaysDisplay) : null}

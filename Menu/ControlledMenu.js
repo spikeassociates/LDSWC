@@ -184,6 +184,7 @@ export default class ControlledMenu extends LitElement {
 				return html`<ldswc-menuitem
 					id=${id}
 					title=${child.title}
+					href=${child.href ? child.href : 'javascript:void(0);'}
 					className=${ifDefined(child.className ? child.className : undefined)}
 					?divider=${child.divder}
 					flavor = ${ifDefined(child.flavor ? child.flavor : undefined)}
@@ -196,6 +197,7 @@ export default class ControlledMenu extends LitElement {
 					rightIconsprite = ${child.rightIconsprite ? child.rightIconsprite : 'utility'}
 					rightIconflavor = ${ifDefined(child.rightIconflavor ? child.rightIconflavor : undefined)}
 					?selected=${ldsIsTruthy(child.checkbox) ? ldsIsTruthy(child.selected) : false}
+					onSelected = ${ifDefined(child.onSelected ? child.onSelected : undefined)}
 				></ldswc-menuitem>`;
 			} else {
 				return html`<ldswc-menusubheader
