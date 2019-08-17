@@ -222,6 +222,8 @@ export default class ControlledMenu extends LitElement {
 			{ 'slds-dropdown_left': this.position.includes('left') },
 			{ 'slds-dropdown_right': this.position.includes('right') },
 			{ 'slds-dropdown_bottom': this.position.startsWith('bottom') },
+			{ 'slds-m-bottom_none': this.toggleOnHover },
+			{ 'slds-m-top_none': this.toggleOnHover },
 			{ [`slds-nubbin_${this.position}`]: this.nubbin },
 			this.className,
 		];
