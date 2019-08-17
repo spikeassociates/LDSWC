@@ -1,5 +1,6 @@
 import { LitElement, html } from '../libs/lit-element/lit-element.js';
 import {ldswcconfig} from '../ldswcconfig.js';
+import {elementIsInside} from '../libs/ldswcutils/ldswcutils.js';
 
 export default class ClickOutside extends LitElement {
 	static get properties() {
@@ -51,7 +52,7 @@ export default class ClickOutside extends LitElement {
 	}
 
 	handle(e) {
-		if (this.onclickoutside && !this.contains(e.target)) {
+		if (this.onclickoutside && !elementIsInside(this, e)) {
 			this.onclickoutside(e);
 		}
 	}
