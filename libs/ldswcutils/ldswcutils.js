@@ -30,6 +30,20 @@ export function ldsIsTruthy(value) {
 	return (value!==undefined && value!==null && value!=='false' && value!=='0');
 }
 
+export function elementIsInside(father, son) {
+	var isInside = false;
+	for (var e=1; e<son.path.length; e++) {
+		if (son.path[e]==document.body) {
+			break;
+		}
+		if (son.path[e]==father) {
+			isInside = true;
+			break;
+		}
+	}
+	return isInside;
+}
+
 export function joinClassNames(classes) {
 	return cx(classes);
 }
