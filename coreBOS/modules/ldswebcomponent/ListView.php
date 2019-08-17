@@ -10,6 +10,12 @@
 include_once 'vtlib/Vtiger/Module.php';
 require_once 'Smarty_setup.php';
 ?>
+<script>
+if (typeof window.ldswcproperties=='undefined') {
+	window.ldswcproperties = {};
+}
+</script>
+
 <script type="module" src="./include/ldswc/ClickOutside/ClickOutside.js"></script>
 <script type="module" src="./include/ldswc/Icon/Icon.js"></script>
 <script type="module" src="./include/ldswc/Icon/ScoreIcon.js"></script>
@@ -30,6 +36,7 @@ require_once 'Smarty_setup.php';
 <script type="module" src="./include/ldswc/SummaryDetail/index.js"></script>
 <script type="module" src="./include/ldswc/Popover/index.js"></script>
 <script type="module" src="./include/ldswc/ExpandableSection/index.js"></script>
+<script type="module" src="./include/ldswc/Menu/index.js"></script>
 
 <ldswc-pageheader
 	title="Lightning Design System web components!!"
@@ -38,6 +45,22 @@ require_once 'Smarty_setup.php';
 	sprite="standard"
 ></ldswc-pageheader>
 
+<script>
+if (window.ldswcproperties.Menu==undefined) {
+	window.ldswcproperties.Menu = {};
+}
+window.ldswcproperties.Menu['renderHeaderMyTestMenu'] = {};
+window.ldswcproperties.Menu['renderHeaderMyTestMenu']['renderHeader'] = () => 'my test menu';
+window.ldswcproperties.Menu['myToggleFunction'] = {};
+window.ldswcproperties.Menu['myToggleFunction']['onToggle'] = () => { console.log('my toggle menu function'); };
+window.ldswcproperties.Menu['mySelectFunction'] = {};
+window.ldswcproperties.Menu['mySelectFunction']['onSelected'] = () => { console.log('my toggle selected menuitem function'); };
+window.ldswcproperties.Menu['testmenu1'] = {};
+window.ldswcproperties.Menu['testmenu1'].button = `<ldswc-iconbutton title="Show More" sprite="utility" icon="down" border="filled" aria-haspop="true"></ldswc-iconbutton>`;
+</script>
+
+<div class="slds-grid slds-m-around--medium">
+<div class="slds-size_9-of-12">
 <span class="slds-icon_container slds-icon-standard-user">
 <ldswc-iconsvg sprite="standard" icon="account" id="anyid" data-kkk="any data"></ldswc-iconsvg>
 </span>
@@ -56,6 +79,83 @@ require_once 'Smarty_setup.php';
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <ldswc-badge theme="inverse" title="this is assistive" label="Some Badge text"></ldswc-badge>
 <ldswc-badge theme="lightest" title="this is assistive" label="Another Badge"></ldswc-badge>
+</div>
+<div class="slds-size_1-of-12">
+<ldswc-menu
+		children='[
+			{
+				"menutype": "subheader",
+				"title": "Menu Sub Heading"
+			},
+			{
+				"menutype": "item",
+				"title": "menu item 1",
+				"href": "javascript:console.log(1)"
+			},
+			{
+				"menutype": "item",
+				"title": "menu item 2",
+				"href": "javascript:console.log(2)",
+				"flavor": "warning",
+				"checkbox": "true",
+				"leftIconicon": "success",
+				"leftIconflavor": "inverse",
+				"selected": "true",
+				"rightIconicon": "settings"
+			},
+			{
+				"menutype": "item",
+				"title": "menu item 3",
+				"href": "javascript:console.log(3)",
+				"checkbox": "true",
+				"leftIconicon": "success"
+			}
+		]'
+		renderHeader='renderHeaderMyTestMenu'
+		onToggle='myToggleFunction'
+		button="testmenu1"
+		toggleOnHover
+	></ldswc-menu>
+</div>
+<div class="slds-size_1-of-12">
+<ldswc-menu
+		children='[
+			{
+				"menutype": "subheader",
+				"title": "Menu Sub Heading"
+			},
+			{
+				"menutype": "item",
+				"title": "menu item 1"
+			},
+			{
+				"menutype": "item",
+				"title": "menu item 2",
+				"flavor": "warning",
+				"checkbox": "true",
+				"leftIconicon": "success",
+				"leftIconflavor": "inverse",
+				"selected": "true",
+				"onSelected": "mySelectFunction",
+				"rightIconicon": "settings"
+			},
+			{
+				"menutype": "item",
+				"title": "menu item 3",
+				"checkbox": "true",
+				"leftIconicon": "success"
+			}
+		]'
+		renderHeader='renderHeaderMyTestMenu'
+		button="testmenu1"
+		Open
+		nubbin
+		position="bottom-right-corner"
+		closeOnClickOutside
+	></ldswc-menu>
+</div>
+</div>
+
 <div class="slds-grid slds-m-around--medium">
 	<div class="slds-size_2-of-12">
 		<ldswc-buttongroup
@@ -388,7 +488,6 @@ figure='<span class="slds-avatar slds-avatar_large">
 
 <br>
 <script>
-var ldswcproperties = {};
 ldswcproperties.timeline = {};
 ldswcproperties.timeline.taskItemBase1 = {};
 ldswcproperties.timeline.taskItemBase1.contentstrigger = `<div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
@@ -669,7 +768,9 @@ ldswcproperties.accordion.accstory1.sumclickfunction = function(e) { console.log
 ldswcproperties.popover = {};
 ldswcproperties.popover.popovermiddle = {};
 ldswcproperties.popover.popovermiddle.popoverclosefunction = function(e) { console.log(e); alert('popover close click on '+e.target.id)};
-window.ldswcproperties.ClickOutside = {};
+if (window.ldswcproperties.ClickOutside==undefined) {
+	window.ldswcproperties.ClickOutside = {};
+}
 window.ldswcproperties.ClickOutside['ClickOutsideMyTestDiv'] = {};
 window.ldswcproperties.ClickOutside['ClickOutsideMyTestDiv']['onclickoutside'] = function () {alert('you clicked outside'); };
 </script>
