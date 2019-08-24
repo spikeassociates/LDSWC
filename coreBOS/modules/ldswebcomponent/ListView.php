@@ -425,13 +425,42 @@ window.ldswcproperties.Menu['testmenu1'].button = `<ldswc-iconbutton title="Show
 
 <div class="slds-grid slds-m-around--medium">
 	<div class="slds-size_4-of-12">
-		<ldswc-expandablesection open title="This is the Header" body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat mi"></ldswc-expandablesection>
+		<ldswc-expandablesection open title="This is the Header" >
+		<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat mi</span>
+		<ldswc-button sprite="standard" icon="search" size="large" iconPosition="left" onclick="alert('Expandable Section 1');" children="Expandable Section 1"></ldswc-button>
+		</ldswc-expandablesection>
 	</div>
 	<div class="slds-size_4-of-12">
-		<ldswc-expandablesection title="This is the Header" body='<div class="slds-text-longform"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>'></ldswc-expandablesection>
+		<ldswc-expandablesection title="This is the Header" >
+			<div class="slds-text-longform">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<div class="slds-page-header slds-page-header_related-list">
+  <div class="slds-page-header__row">
+    <div class="slds-page-header__col-title">
+      <div class="slds-media">
+        <div class="slds-media__body" style="text-align:center;">
+          <div class="slds-page-header__name">
+            <div class="slds-page-header__name-title">
+              <h1>
+                <span class="slds-page-header__title slds-truncate">Expandable Content</span>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			</div>
+		</ldswc-expandablesection>
 	</div>
 	<div class="slds-size_4-of-12">
-		<ldswc-expandablesection open uncollapsable title='<span><h2 class="slds-text-heading_medium">Manage your channels</h2></span>' body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></ldswc-expandablesection>
+		<ldswc-expandablesection open uncollapsable title='<span><h2 class="slds-text-heading_medium">Manage your channels</h2></span>' >
+		<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+		</ldswc-expandablesection>
 	</div>
 </div>
 
