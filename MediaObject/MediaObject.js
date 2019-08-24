@@ -99,9 +99,7 @@ export default class MediaObject extends LitElement {
 		] : [
 			'slds-media__figure'
 		];
-		return html`
-<div class=${joinClassNames(sldsClasses)}>${this.renderFigure(this.figurePosition, figureClasses, bodyClasses)}</div>
-`;
+		return html`<div class=${joinClassNames(sldsClasses)}>${this.renderFigure(this.figurePosition, figureClasses, bodyClasses)}</div>`;
 	}
 }
 
