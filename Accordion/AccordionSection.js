@@ -1,16 +1,13 @@
 
-import { LitElement, html } from '../libs/lit-element/lit-element.js';
+import { html } from '../libs/lit-element/lit-element.js';
+import LDSWCElement from '../libs/ldswcelement/ldswcelement.js';
 import Button from '../Button/Base/Button.js';
 import IconButton from '../Button/Base/ButtonIcon.js';
 import { joinClassNames, getAssistive, getEmptySpan} from '../libs/ldswcutils/ldswcutils.js';
 
-export default class AccordionSection extends LitElement {
+export default class AccordionSection extends LDSWCElement {
 	static get properties() {
 		return {
-			/**
-			 * section content
-			 */
-			children: { type: String },
 			/**
 			 * class name
 			 */
@@ -22,11 +19,11 @@ export default class AccordionSection extends LitElement {
 			/**
 			 * section is open
 			 */
-			isOpen: { type: String },
+			isOpen: { type: Boolean },
 			/**
 			 * indicates if this is the first element in the accordion. for CSS formatting
 			 */
-			isFirst: { type: String },
+			isFirst: { type: Boolean },
 			/**
 			 * section summary
 			 */
@@ -42,12 +39,9 @@ export default class AccordionSection extends LitElement {
 		super();
 		this.className = null;
 		this.isOpen = false;
+		this.isFirst = false;
 		this.summary = null;
 		this.summaryOnClick = null;
-	}
-
-	createRenderRoot() {
-		return this;
 	}
 
 	switchClick(e) {
@@ -79,15 +73,13 @@ export default class AccordionSection extends LitElement {
 			'slds-accordion__list-item',
 			this.className,
 		];
-		let isOpen = (this.isOpen!==null && this.isOpen!=='false' && this.isOpen!=='0');
-		let isFirst = (this.isFirst!==null && this.isFirst!=='false' && this.isFirst!=='0');
 		const sectionClasses = [
 			'slds-accordion__section',
-			{ 'slds-is-open': isOpen },
+			{ 'slds-is-open': !!this.isOpen },
 		];
 		const btnchildren = `<span class="slds-truncate" title="${this.summary}">${this.summary}</span>`;
-		const children = eval('html`'+this.children+'`');
-		return html`${(isFirst ? '' : getEmptySpan())}
+		//const children = eval('html`'+this.children+'`');
+		return html`${(!this.isFirst ? '' : getEmptySpan())}
 <li class=${joinClassNames(liClasses)} key=${this.id}>
 	<section class=${joinClassNames(sectionClasses)} id=${this.id}>
 	<div class="slds-accordion__summary">
@@ -100,7 +92,7 @@ export default class AccordionSection extends LitElement {
 			iconSize="none"
 			flavor="none"
 			aria-controls=${'accordion-details-'+this.id}
-			aria-expanded=${isOpen ? 'true' : 'false'}
+			?aria-expanded=${this.isOpen}
 			children=${btnchildren}
 			@click="${this.switchClick}"
 		></ldswc-button>
@@ -108,11 +100,11 @@ export default class AccordionSection extends LitElement {
 		${this.summaryOnClick!='null' && this.summaryOnClick!='none' ? this.summaryIcon() : ''}
 	</div>
 	<div
-		aria-hidden=${isOpen ? 'true' : 'false'}
+		?aria-hidden=${this.isOpen}
 		class="slds-accordion__content"
 		id=${this.id}
 	>
-		${children}
+		<slot></slot>
 	</div>
 	</section>
 </li>`;
@@ -120,7 +112,3 @@ export default class AccordionSection extends LitElement {
 }
 
 customElements.define('ldswc-accordionsection', AccordionSection);
-
-
-
-

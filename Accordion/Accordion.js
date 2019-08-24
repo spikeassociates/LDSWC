@@ -1,7 +1,8 @@
-import { LitElement, html } from '../libs/lit-element/lit-element.js';
+import { html } from '../libs/lit-element/lit-element.js';
+import LDSWCElement from '../libs/ldswcelement/ldswcelement.js';
 import { joinClassNames } from '../libs/ldswcutils/ldswcutils.js';
 
-export default class Accordion extends LitElement {
+export default class Accordion extends LDSWCElement {
 	static get properties() {
 		return {
 			/**
@@ -21,17 +22,9 @@ export default class Accordion extends LitElement {
 			 */
 			styled: { type: Boolean },
 			/**
-			 * controlled mode: id(s) of open section(s)
-			 */
-			open: { type: Array },
-			/**
 			 * controlled mode: section click handler
 			 */
 			onSectionClick: { type: String },
-			/**
-			 * array of accordion section(s)
-			 */
-			children: { type: Array },
 			/**
 			 * function for the button on the right of summary. must be in the window global scope, inside the ldswcproperties object
 			 */
@@ -45,14 +38,9 @@ export default class Accordion extends LitElement {
 		this.className = null;
 		this.styled = null;
 		this.multiple = null;
-		this.open = null;
 		this.onSectionClick = null;
 		this.summaryOnClick = null;
 		this.state = null;
-	}
-
-	createRenderRoot() {
-		return this;
 	}
 
 	handleClick(e) {
@@ -60,8 +48,8 @@ export default class Accordion extends LitElement {
 		if (e && e.target) {
 			id = e.target.id;
 		}
-		if (this.open !== null && typeof this.onSectionClick === 'function') { // controlled
-			this.onSectionClick(id);
+		if (typeof this.onSectionClick === 'function') { // controlled
+			this.onSectionClick(e);
 			return;
 		}
 		// uncontrolled
@@ -74,33 +62,20 @@ export default class Accordion extends LitElement {
 		} else {
 			this.state = { activeSections: this.state.activeSections.filter(a => a !== id) };
 		}
-		this.requestUpdate();
+		var self = this;
+		this.querySelectorAll('ldswc-accordionsection').forEach(function (wc) {
+			wc.isOpen = (self.state.activeSections.indexOf(wc.id)!=-1);
+		});
 	}
 
-	sumClick(e) {
-		if (window.ldswcproperties.accordion[this.id] && typeof window.ldswcproperties.accordion[this.id][this.summaryOnClick] === 'function') {
-			window.ldswcproperties.accordion[this.id][this.summaryOnClick](e);
-		} else {
-			console.error('LDSWC: '+this.summaryOnClick+' is not a function.');
+	connectedCallback() {
+		super.connectedCallback();
+		var self=this;
+		if (this.onSectionClick || this.handleClick) {
+			this.querySelectorAll('ldswc-accordionsection').forEach(function (wc) {
+				wc.addEventListener('switchClicked', self.handleClick.bind(self), true);
+			});
 		}
-	}
-
-	renderSections() {
-		let sClick = this.onSectionClick || this.handleClick;
-		let activeSections = this.open || this.state.activeSections;
-		if (typeof activeSections === 'string') {
-			activeSections = [activeSections];
-		}
-		return this.children.map(child => html`<ldswc-accordionsection
-			id=${child.id}
-			isOpen=${activeSections.includes(child.id) ? 'true' : 'false'}
-			isFirst=${child.isFirst ? 'true' : 'false'}
-			summary=${child.summary}
-			summaryOnClick=${this.summaryOnClick}
-			@summaryClicked=${this.sumClick}
-			children=${child.children}
-			@switchClicked=${sClick}
-		></ldswc-accordionsection>`);
 	}
 
 	render() {
@@ -108,7 +83,7 @@ export default class Accordion extends LitElement {
 			'slds-accordion',
 			this.className
 		];
-		if (this.open === null && this.state === null) { // controlled
+		if (this.state === null) {
 			if (this.defaultOpen) {
 				if (typeof defaultOpen === 'string') {
 					this.state = { activeSections: [this.defaultOpen] };
@@ -124,13 +99,13 @@ export default class Accordion extends LitElement {
 			return html`
 <div class="slds-card">
 <ul class=${joinClassNames(sldsClasses)}>
-	${this.renderSections()}
+	<slot></slot>
 </ul>
 </div>`;
 		}
 		return html`
 <ul class=${joinClassNames(sldsClasses)}>
-${this.renderSections()}
+	<slot></slot>
 </ul>`;
 	}
 }
