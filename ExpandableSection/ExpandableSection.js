@@ -1,9 +1,10 @@
-import { LitElement, html } from '../libs/lit-element/lit-element.js';
+import { html } from '../libs/lit-element/lit-element.js';
+import LDSWCElement from '../libs/ldswcelement/ldswcelement.js';
 import {joinClassNames} from '../libs/ldswcutils/ldswcutils.js';
 import Button from '../Button/Base/Button.js';
 import ButtonIcon from '../Button/Base/ButtonIcon.js';
 
-export default class ExpandableSection extends LitElement {
+export default class ExpandableSection extends LDSWCElement {
 	static get properties() {
 		return {
 			/**
@@ -26,10 +27,6 @@ export default class ExpandableSection extends LitElement {
 			 * section title
 			 */
 			title: { type: String },
-			/**
-			 * section body
-			 */
-			body: { type: String },
 		};
 	}
 
@@ -55,15 +52,6 @@ export default class ExpandableSection extends LitElement {
 			var children = eval('html`'+this.title+'`');
 		} else {
 			var children = html`${this.title}`;
-		}
-		return children;
-	}
-
-	renderContent() {
-		if (this.body.indexOf('<div')!=-1 || this.body.indexOf('<span')!=-1) {
-			var children = eval('html`'+this.body+'`');
-		} else {
-			var children = html`${this.body}`;
 		}
 		return children;
 	}
@@ -102,7 +90,7 @@ export default class ExpandableSection extends LitElement {
 		}
 	</h3>
 	<div aria-hidden=${!this.open} class="slds-section__content" id=${this.id}>
-	${this.renderContent()}
+	<slot></slot>
 	</div>
 </div>`;
 	}
