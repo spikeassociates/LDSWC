@@ -20,6 +20,19 @@ export default class LDSWCElement extends LitElement {
 		this._mychildren = Array.from(this.children);
 	}
 
+	_replaceSlots(node, elements) {
+		if (node.nodeName=='SLOT' && node.name=='' && elements['unnamedslot']!=undefined) {
+			node.replaceWith(elements['unnamedslot']);
+		} else if (node.nodeName=='SLOT' && node.name!='' && elements[node.name]!=undefined) {
+			node.replaceWith(elements[node.name]);
+		}
+		if (node.children != null && node.children!=undefined && Array.from(node.children)!=[]) {
+			for (let subchild of node.children) {
+				this._replaceSlots(subchild, elements);
+			}
+		}
+	}
+
 	connectedCallback() {
 		super.connectedCallback();
 		this.observer = new MutationObserver((mutations) => {
@@ -47,19 +60,31 @@ export default class LDSWCElement extends LitElement {
 				});
 			});
 			for (let child of this._mychildren) {
-				if (child.nodeName=='SLOT' && child.name=='' && elems['unnamedslot']!=undefined) {
-					child.replaceWith(elems['unnamedslot']);
-				} else if (child.nodeName=='SLOT' && child.name!='' && elems[child.name]!=undefined) {
-					child.replaceWith(elems[child.name]);
-				}
-				for (let subchild of child.children) {
-					if (subchild.nodeName=='SLOT' && subchild.name=='' && elems['unnamedslot']!=undefined) {
-						subchild.replaceWith(elems['unnamedslot']);
-					} else if (subchild.nodeName=='SLOT' && subchild.name!='' && elems[subchild.name]!=undefined) {
-						subchild.replaceWith(elems[subchild.name]);
-					}
-				}
+				this._replaceSlots(child, elems);
 			}
+			// for (let child of this._mychildren) {
+			// 	if (child.nodeName=='SLOT' && child.name=='' && elems['unnamedslot']!=undefined) {
+			// 		child.replaceWith(elems['unnamedslot']);
+			// 	} else if (child.nodeName=='SLOT' && child.name!='' && elems[child.name]!=undefined) {
+			// 		child.replaceWith(elems[child.name]);
+			// 	}
+			// 	for (let subchild of child.children) {
+			// 		if (subchild.nodeName=='SLOT' && subchild.name=='' && elems['unnamedslot']!=undefined) {
+			// 			subchild.replaceWith(elems['unnamedslot']);
+			// 		} else if (subchild.nodeName=='SLOT' && subchild.name!='' && elems[subchild.name]!=undefined) {
+			// 			subchild.replaceWith(elems[subchild.name]);
+			// 		}
+			// 		if (Array.from(subchild.children)!=[]) {
+			// 			for (let subsubchild of subchild.children) {
+			// 				if (subsubchild.nodeName=='SLOT' && subsubchild.name=='' && elems['unnamedslot']!=undefined) {
+			// 					subsubchild.replaceWith(elems['unnamedslot']);
+			// 				} else if (subchild.nodeName=='SLOT' && subsubchild.name!='' && elems[subsubchild.name]!=undefined) {
+			// 					subsubchild.replaceWith(elems[subsubchild.name]);
+			// 				}
+			// 			}
+			// 		}
+			// 	}
+			// }
 		});
 		this.observer.observe(this, {
 			childList: true,
