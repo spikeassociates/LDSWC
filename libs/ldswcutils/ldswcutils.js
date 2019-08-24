@@ -44,6 +44,17 @@ export function elementIsInside(father, son) {
 	return isInside;
 }
 
+export function getSlotContents(node) {
+	switch (node.nodeType) {
+	case 1:
+		return node.outerHTML;
+	case 3:
+		return node.textContent;
+	default:
+		return '';
+	}
+}
+
 export function joinClassNames(classes) {
 	return cx(classes);
 }
