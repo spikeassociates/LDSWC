@@ -19,7 +19,7 @@ window.ldswcproperties.Menu['ldstmenu'].button = `<ldswc-button size="large" tit
 		},
 		{
 			"menutype": "item",
-			"title": "Clickoutside",
+			"title": "Clickoutside/lightDOM Slot",
 			"href": "index.php?action=ClickOut&module=ldswebcomponent"
 		},
 		{
