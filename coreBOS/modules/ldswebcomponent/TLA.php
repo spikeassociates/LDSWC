@@ -292,71 +292,109 @@ ldswcproperties.timeline.taskItemBase4.contentsdetails = `<article class="slds-b
 <br><br>
 <hr>
 <br><br>
-<script>
-ldswcproperties.accordion = {};
-ldswcproperties.accordion.accstory1 = {};
-ldswcproperties.accordion.accstory1.sumclickfunction = function(e) { console.log(e); alert('summary more info click on '+e.target.id)};
-</script>
 <div class="slds-grid slds-gutters">
 <div class="slds-col slds-size_6-of-12">
 <ldswc-accordion
 	id="accstory1"
-	children='[
-	{
-		"id":"accsec1",
-		"summary":"Accordion1 summary",
-		"isOpen":1,
-		"isFirst":1,
-		"children":"acc1contents"
-	},
-	{
-		"id":"accsec2",
-		"summary":"Accordion2 summary",
-		"isOpen":0,
-		"isFirst":0,
-		"children":"acc2contents"
-	},
-	{
-		"id":"accsec3",
-		"summary":"Accordion3 summary",
-		"isOpen":0,
-		"isFirst":0,
-		"children":"acc3contents"
-	}
-	]'
 	multiple
 	styled
-	summaryOnClick="sumclickfunction"
-></ldswc-accordion>
+>
+<ldswc-accordionsection id="accsec1" summary="Accordion1 summary" isOpen isFirst>
+<div class="slds-page-header slds-page-header_related-list">
+  <div class="slds-page-header__row">
+    <div class="slds-page-header__col-title">
+      <div class="slds-media">
+        <div class="slds-media__body" style="text-align:center;">
+          <div class="slds-page-header__name">
+            <div class="slds-page-header__name-title">
+              <h1>
+                <span class="slds-page-header__title slds-truncate">Accordion Section 1</span>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ldswc-accordionsection>
+<ldswc-accordionsection id="accsec2" summary="Accordion2 summary">
+<ldswc-button sprite="standard" icon="search" size="large" iconPosition="right" onclick="alert('Accordion Section 2');" children="Accordion Section 2"></ldswc-button>
+</ldswc-accordionsection>
+<ldswc-accordionsection id="accsec3" summary="Accordion3 summary"><span>Accordion Section 3</span></ldswc-accordionsection>
+</ldswc-accordion>
 </div>
 
 <div class="slds-col slds-size_6-of-12">
-<ldswc-accordion
-	id="accstory2"
-	children='[
-	{
-		"id":"accsec1",
-		"summary":"Accordion1 summary",
-		"isOpen":1,
-		"isFirst":1,
-		"children":"<b>Accordion Section 1</b>"
-	},
-	{
-		"id":"accsec2",
-		"summary":"Accordion2 summary",
-		"isOpen":0,
-		"isFirst":0,
-		"children":"<b>Accordion Section 2</b>"
-	},
-	{
-		"id":"accsec3",
-		"summary":"Accordion3 summary",
-		"isOpen":0,
-		"isFirst":0,
-		"children":"<b>Accordion Section 3</b>"
-	}
-	]'
-></ldswc-accordion>
+<ldswc-accordion id="accstory2">
+<ldswc-accordionsection id="accsec21" summary="Accordion1 summary" isOpen isFirst>
+<div class="slds-page-header slds-page-header_related-list">
+  <div class="slds-page-header__row">
+    <div class="slds-page-header__col-title">
+      <div class="slds-media">
+        <div class="slds-media__body" style="text-align:center;">
+          <div class="slds-page-header__name">
+            <div class="slds-page-header__name-title">
+              <h1>
+                <span class="slds-page-header__title slds-truncate">Accordion Section 1</span>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ldswc-accordionsection>
+<ldswc-accordionsection id="accsec22" summary="Accordion2 summary">
+<ldswc-button sprite="standard" icon="search" size="large" iconPosition="right" onclick="alert('Accordion Section 2');" children="Accordion Section 2"></ldswc-button>
+</ldswc-accordionsection>
+<ldswc-accordionsection id="accsec23" summary="Accordion3 summary"><span>Accordion Section 3</span></ldswc-accordionsection>
+</ldswc-accordion>
 </div>
 
 </div>
+<div class="slds-grid slds-gutters">
+<div class="slds-col slds-size_6-of-12">
+<ldswc-accordion
+	id="accstoryc"
+>
+<ldswc-accordionsection id="accsecc1" summary="AccordionC1 summary" isOpen isFirst>
+<div class="slds-page-header slds-page-header_related-list">
+  <div class="slds-page-header__row">
+    <div class="slds-page-header__col-title">
+      <div class="slds-media">
+        <div class="slds-media__body" style="text-align:center;">
+          <div class="slds-page-header__name">
+            <div class="slds-page-header__name-title">
+              <h1>
+                <span class="slds-page-header__title slds-truncate">Accordion Section C1</span>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ldswc-accordionsection>
+<ldswc-accordionsection id="accsecc2" summary="AccordionC2 summary">
+<ldswc-button sprite="standard" icon="search" size="large" iconPosition="right" onclick="alert('Accordion Section C');" children="Accordion Section C"></ldswc-button>
+</ldswc-accordionsection>
+<ldswc-accordionsection id="accsecc3" summary="AccordionC3 summary"><span>Accordion Section C3</span></ldswc-accordionsection>
+</ldswc-accordion>
+</div>
+</div>
+<script>
+function accSummaryClicked(e) {
+	console.log(e);
+	alert('You clicked on the Accordion Section Summary button '+e.target.id);
+}
+function acconSectionClick(e) {
+	alert('This Accordion is externally controled. You clicked on '+e.target.id);
+}
+document.getElementById('accstoryc').onSectionClick = acconSectionClick;
+document.getElementById('accstory1').addEventListener('summaryClicked', accSummaryClicked, true);
+document.getElementById('accstory2').addEventListener('summaryClicked', accSummaryClicked, true);
+document.getElementById('accstoryc').addEventListener('summaryClicked', accSummaryClicked, true);
+</script>
