@@ -35,7 +35,7 @@ export default class Textarea extends LitElement {
 			 */
 			label: { type: String },
 			/**
-			 * onChange handler for the slider
+			 * onChange handler for the textarea
 			 */
 			whenChange: { type: String },
 			/**

@@ -25,7 +25,7 @@ export default class FormElement extends LDSWCElement {
 			 * adds required-attribute to the form element
 			 */
 			required: { type: Boolean },
-		}
+		};
 	}
 
 	constructor() {
@@ -46,11 +46,10 @@ export default class FormElement extends LDSWCElement {
 			this.className
 		];
 
-		return html`
-${this.fieldset ?
-	html`<fieldset class=${joinClassNames(sldsClasses)}><slot></slot></fieldset>`:
-	html`<div class=${joinClassNames(sldsClasses)}><slot></slot></div>`
-}`;
+		return html`${this.fieldset ?
+			html`<fieldset class=${joinClassNames(sldsClasses)}><slot></slot></fieldset>`:
+			html`<div class=${joinClassNames(sldsClasses)}><slot></slot></div>`
+		}`;
 	}
 }
 

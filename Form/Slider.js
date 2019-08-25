@@ -121,7 +121,7 @@ export default class Slider extends LitElement {
 			/>
 			<span class="slds-slider__value" aria-hidden="true">${value}</span>
 			</div>`;
-	};
+	}
 
 	render() {
 		return html`

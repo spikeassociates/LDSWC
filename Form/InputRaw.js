@@ -140,7 +140,7 @@ export default class InputRaw extends LitElement {
 			eval('f = function (e) {'+this.whenKeyPress+'}');
 			this.addEventListener('keyup', f.bind(this), true);
 		}
-}
+	}
 
 	renderIconLeft() {
 		const iconName = (this.error && this.errorIcon) ? 'warning' : this.iconLeft;
@@ -158,7 +158,7 @@ export default class InputRaw extends LitElement {
 			></ldswc-iconsvg>`;
 		}
 		return null;
-	};
+	}
 
 	renderIconRight() {
 		if (this.iconRight && this.iconRightOnClick) {
@@ -188,7 +188,7 @@ export default class InputRaw extends LitElement {
 			></ldswc-iconsvg>`;
 		}
 		return null;
-	};
+	}
 
 	render() {
 		const sldsClasses = [
@@ -209,15 +209,17 @@ export default class InputRaw extends LitElement {
 				type=${this.type}
 				value=${this.value}
 			/>
-			${this.showSpinner ? html`<div class="slds-input__icon-group slds-input__icon-group_right">
-				<ldswc-spinner
-					flavor="brand"
-					className="slds-input__spinner slds-m-right_xx-small"
-					size="x-small"
-				/></ldswc-spinner>
-				${this.renderIconRight()}
-				</div>`
-			: this.renderIconRight()}`;
+			${this.showSpinner ?
+				html`<div class="slds-input__icon-group slds-input__icon-group_right">
+					<ldswc-spinner
+						flavor="brand"
+						className="slds-input__spinner slds-m-right_xx-small"
+						size="x-small"
+					/></ldswc-spinner>
+					${this.renderIconRight()}
+					</div>`
+				: this.renderIconRight()
+			}`;
 	}
 }
 

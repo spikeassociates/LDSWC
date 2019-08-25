@@ -143,7 +143,8 @@ export default class Input extends LitElement {
 				?required=${this.required}
 			></ldswc-formelementlabel>
 			<ldswc-formelementcontrol ?hasIconLeft=${hasIconLeft} ?hasIconRight=${hasIconRight} >
-				${!this.isStatic ? html`<ldswc-inputraw
+				${!this.isStatic ?
+					html`<ldswc-inputraw
 						error=${ifDefined(this.error)}
 						?errorIcon=${this.errorIcon}
 						?hideErrorMessage=${this.hideErrorMessage}
@@ -165,7 +166,8 @@ export default class Input extends LitElement {
 						whenFocus=${ifDefined(this.whenFocus)}
 						whenKeyPress=${ifDefined(this.whenKeyPress)}
 					></ldswc-inputraw>`
-				: html`<div class="slds-form-element__static">${this.value}</div>`}
+				: html`<div class="slds-form-element__static">${this.value}</div>`
+			}
 			</ldswc-formelementcontrol>
 			${(!this.hideErrorMessage && this.error) && html`<ldswc-formelementerror error=${this.error} id=${this.id} ></ldswc-formelementerror>`}
 		</ldswc-formelement>`;
