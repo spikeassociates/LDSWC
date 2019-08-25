@@ -72,12 +72,16 @@ function onkp(e) {
 		<ldswc-slider label="move around" id="sldv" vertical min=0 max=10 step=2 value="6" whenchange="console.log(this.value)" size="x-small"></ldswc-slider>
 	</div>
 	<div class="slds-col slds-size_2-of-12">
+		<ldswc-textarea label="required and on change" required whenchange="console.log('TA change');" placeholder="place holder"></ldswc-textarea>
 	</div>
 	<div class="slds-col slds-size_2-of-12">
+		<ldswc-textarea label="disabled" required disabled value="this is the value"></ldswc-textarea>
 	</div>
 	<div class="slds-col slds-size_2-of-12">
+		<ldswc-textarea label="readonly" readonly value="this is the value" ></ldswc-textarea>
 	</div>
 	<div class="slds-col slds-size_2-of-12">
+		<ldswc-textarea label="error state" id="taerror" error="this one is incorrect"></ldswc-textarea>
 	</div>
 	<div class="slds-col slds-size_2-of-12">
 	</div>
