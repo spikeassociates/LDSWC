@@ -77,7 +77,6 @@ export default class Slider extends LitElement {
 		this.error = undefined;
 		this.hideErrorMessage = false;
 		this.hideLabel = false;
-		this.multiple = false;
 		this.whenChange = undefined;
 	}
 
