@@ -33,6 +33,7 @@ if (typeof window.ldswcproperties=='undefined') {
 <script type="module" src="./include/ldswc/Form/Input.js"></script>
 <script type="module" src="./include/ldswc/Form/Slider.js"></script>
 <script type="module" src="./include/ldswc/Form/Textarea.js"></script>
+<script type="module" src="./include/ldswc/Form/Select.js"></script>
 
 <ldswc-pageheader
 	title="Lightning Design System web components!!"

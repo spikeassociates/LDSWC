@@ -73,15 +73,43 @@ function onkp(e) {
 	</div>
 	<div class="slds-col slds-size_2-of-12">
 		<ldswc-textarea label="required and on change" required whenchange="console.log('TA change');" placeholder="place holder"></ldswc-textarea>
-	</div>
-	<div class="slds-col slds-size_2-of-12">
+		<br><br>
 		<ldswc-textarea label="disabled" required disabled value="this is the value"></ldswc-textarea>
 	</div>
 	<div class="slds-col slds-size_2-of-12">
 		<ldswc-textarea label="readonly" readonly value="this is the value" ></ldswc-textarea>
+		<br><br>
+		<ldswc-textarea label="error state" id="taerror" error="this one is incorrect"></ldswc-textarea>
 	</div>
 	<div class="slds-col slds-size_2-of-12">
-		<ldswc-textarea label="error state" id="taerror" error="this one is incorrect"></ldswc-textarea>
+		<ldswc-select label="first picklist" whenchange="console.log(this.selected);" required>
+		<option value="sop1">SOP1</option>
+		<option value="sop2">SOP2</option>
+		<option value="sop3">SOP3</option>
+		<option value="sop4">SOP4</option>
+		</ldswc-select>
+		<br><br>
+		<ldswc-select label="second picklist" required disabled>
+		<option value="sop1">SOP1</option>
+		<option value="sop2">SOP2</option>
+		<option value="sop3" selected>SOP3</option>
+		<option value="sop4">SOP4</option>
+		</ldswc-select>
+	</div>
+	<div class="slds-col slds-size_2-of-12">
+		<ldswc-select label="error picklist" error="this one is wrong">
+		<option value="sop1">SOP1</option>
+		<option value="sop2">SOP2</option>
+		<option value="sop3">SOP3</option>
+		<option value="sop4">SOP4</option>
+		</ldswc-select>
+		<br>
+		<ldswc-select label="multiple picklist" multiple>
+		<option value="sop1">SOP1</option>
+		<option value="sop2" selected>SOP2</option>
+		<option value="sop3">SOP3</option>
+		<option value="sop4" selected>SOP4</option>
+		</ldswc-select>
 	</div>
 	<div class="slds-col slds-size_2-of-12">
 	</div>
