@@ -1,5 +1,6 @@
 import { LitElement, html } from '../libs/lit-element/lit-element.js';
 import {joinClassNames} from '../libs/ldswcutils/ldswcutils.js';
+import { ifDefined } from '../libs/lit-html/directives/if-defined.js';
 
 export default class FormElementLabel extends LitElement {
 	static get properties() {
@@ -72,17 +73,17 @@ export default class FormElementLabel extends LitElement {
 			this.className
 		];
 		if (this.readOnly) {
-			return html`<span class=${joinClassNames(sldsClasses)} htmlFor=${this.readOnly || this.legend ? null : this.id}>
+			return html`<span class=${joinClassNames(sldsClasses)} htmlFor=${ifDefined(this.readOnly || this.legend ? undefined : this.id)}>
 				${renderRequired()}
 				${this.renderTitle(this.label)}
 				</span>`;
 		} else if (this.legend) {
-			return html`<legend class=${joinClassNames(sldsClasses)} htmlFor=${this.readOnly || this.legend ? null : this.id}>
+			return html`<legend class=${joinClassNames(sldsClasses)} htmlFor=${ifDefined(this.readOnly || this.legend ? undefined : this.id)}>
 				${renderRequired()}
 				${this.renderTitle(this.label)}
 				</legend>`;
 		} else {
-			return html`<label class=${joinClassNames(sldsClasses)} htmlFor=${this.readOnly || this.legend ? null : this.id}>
+			return html`<label class=${joinClassNames(sldsClasses)} htmlFor=${ifDefined(this.readOnly || this.legend ? undefined : this.id)}>
 				${renderRequired()}
 				${this.renderTitle(this.label)}
 				</label>`;
