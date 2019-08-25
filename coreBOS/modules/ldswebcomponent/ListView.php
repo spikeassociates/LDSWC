@@ -16,14 +16,12 @@ include 'modules/ldswebcomponent/ldsincs.php';
 if (window.ldswcproperties.Menu==undefined) {
 	window.ldswcproperties.Menu = {};
 }
-window.ldswcproperties.Menu['renderHeaderMyTestMenu'] = {};
-window.ldswcproperties.Menu['renderHeaderMyTestMenu']['renderHeader'] = () => 'my test menu';
-window.ldswcproperties.Menu['myToggleFunction'] = {};
-window.ldswcproperties.Menu['myToggleFunction']['onToggle'] = () => { console.log('my toggle menu function'); };
 window.ldswcproperties.Menu['mySelectFunction'] = {};
 window.ldswcproperties.Menu['mySelectFunction']['onSelected'] = () => { console.log('my toggle selected menuitem function'); };
 window.ldswcproperties.Menu['testmenu1'] = {};
-window.ldswcproperties.Menu['testmenu1'].button = `<ldswc-iconbutton title="Show More" sprite="utility" icon="down" border="filled" aria-haspop="true"></ldswc-iconbutton>`;
+window.ldswcproperties.Menu['testmenu1']['button'] = `<ldswc-iconbutton title="Show More" sprite="utility" icon="down" border="filled" aria-haspop="true"></ldswc-iconbutton>`;
+window.ldswcproperties.Menu['testmenu1']['renderHeader'] = () => 'my test menu';
+window.ldswcproperties.Menu['testmenu1']['onToggle'] = () => { console.log('my toggle menu function'); };
 </script>
 
 <div class="slds-grid slds-m-around--medium">
@@ -81,8 +79,8 @@ window.ldswcproperties.Menu['testmenu1'].button = `<ldswc-iconbutton title="Show
 				"leftIconicon": "success"
 			}
 		]'
-		renderHeader='renderHeaderMyTestMenu'
-		onToggle='myToggleFunction'
+		renderHeader='testmenu1'
+		onToggle='testmenu1'
 		button="testmenu1"
 		toggleOnHover
 		position="bottom"
@@ -123,6 +121,7 @@ window.ldswcproperties.Menu['testmenu1'].button = `<ldswc-iconbutton title="Show
 		nubbin
 		position="bottom-right-corner"
 		closeOnClickOutside
+		id="secondmenu"
 	></ldswc-menu>
 </div>
 </div>
@@ -488,4 +487,5 @@ figure='<span class="slds-avatar slds-avatar_large">
 ldswcproperties.popover = {};
 ldswcproperties.popover.popovermiddle = {};
 ldswcproperties.popover.popovermiddle.popoverclosefunction = function(e) { console.log(e); alert('popover close click on '+e.target.id)};
+document.getElementById('secondmenu').renderHeader=() => { 'direct test' };
 </script>
