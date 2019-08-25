@@ -68,7 +68,7 @@ function onkp(e) {
 	</div>
 </div>
 <div class="slds-grid slds-gutters">
-	<div class="slds-col slds-size_2-of-12">
+	<div class="slds-col slds-size_2-of-12 slds-m-left_large">
 		<ldswc-slider label="move around" id="sldv" vertical min=0 max=10 step=2 value="6" whenchange="console.log(this.value)" size="x-small"></ldswc-slider>
 	</div>
 	<div class="slds-col slds-size_2-of-12">
@@ -82,7 +82,7 @@ function onkp(e) {
 		<ldswc-textarea label="error state" id="taerror" error="this one is incorrect"></ldswc-textarea>
 	</div>
 	<div class="slds-col slds-size_2-of-12">
-		<ldswc-select label="first picklist" whenchange="console.log(this.selected);" required>
+		<ldswc-select label="first picklist" whenchange="console.log(this);" required>
 		<option value="sop1">SOP1</option>
 		<option value="sop2">SOP2</option>
 		<option value="sop3">SOP3</option>
