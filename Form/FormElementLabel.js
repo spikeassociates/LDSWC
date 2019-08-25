@@ -49,6 +49,14 @@ export default class FormElementLabel extends LitElement {
 		return this;
 	}
 
+	renderTitle(title) {
+		if (title.indexOf('<div')!=-1 || title.indexOf('<span')!=-1) {
+			return eval('html`'+title+'`');
+		} else {
+			return html`${title}`;
+		}
+	}
+
 	render() {
 		const renderRequired = () => {
 			if (this.required) {
@@ -63,21 +71,20 @@ export default class FormElementLabel extends LitElement {
 			{ 'slds-assistive-text': this.hideLabel },
 			this.className
 		];
-
 		if (this.readOnly) {
 			return html`<span class=${joinClassNames(sldsClasses)} htmlFor=${this.readOnly || this.legend ? null : this.id}>
 				${renderRequired()}
-				${this.label}
+				${this.renderTitle(this.label)}
 				</span>`;
 		} else if (this.legend) {
 			return html`<legend class=${joinClassNames(sldsClasses)} htmlFor=${this.readOnly || this.legend ? null : this.id}>
 				${renderRequired()}
-				${this.label}
+				${this.renderTitle(this.label)}
 				</legend>`;
 		} else {
 			return html`<label class=${joinClassNames(sldsClasses)} htmlFor=${this.readOnly || this.legend ? null : this.id}>
 				${renderRequired()}
-				${this.label}
+				${this.renderTitle(this.label)}
 				</label>`;
 		}
 	}
