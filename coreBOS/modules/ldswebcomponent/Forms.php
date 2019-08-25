@@ -55,6 +55,25 @@ function onkp(e) {
 		<ldswc-input label="this is disabled" value="this is disabled" disabled></ldswc-input>
 	</div>
 	<div class="slds-col slds-size_2-of-12">
+		<ldswc-slider label="move around" id="sld1" min=0 max=20 step=2 value="10"></ldswc-slider>
+	</div>
+	<div class="slds-col slds-size_2-of-12">
+		<ldswc-slider id="sld2" size="x-small" label="this one is small"></ldswc-slider>
+	</div>
+	<div class="slds-col slds-size_2-of-12">
+		<ldswc-slider label="this one is diabled" disabled min=0 max=20 step=2 value="15"></ldswc-slider>
+	</div>
+	<div class="slds-col slds-size_2-of-12">
+		<ldswc-slider error="this one has a wrong value" label="incorrect value" min=0 max=20 step=2 value="15"></ldswc-slider>
+	</div>
+</div>
+<div class="slds-grid slds-gutters">
+	<div class="slds-col slds-size_2-of-12">
+		<ldswc-slider label="move around" id="sldv" vertical min=0 max=10 step=2 value="6" whenchange="console.log(this.value)" size="x-small"></ldswc-slider>
+	</div>
+	<div class="slds-col slds-size_2-of-12">
+	</div>
+	<div class="slds-col slds-size_2-of-12">
 	</div>
 	<div class="slds-col slds-size_2-of-12">
 	</div>
