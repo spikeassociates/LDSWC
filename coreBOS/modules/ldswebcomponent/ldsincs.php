@@ -25,6 +25,12 @@ if (typeof window.ldswcproperties=='undefined') {
 <script type="module" src="./include/ldswc/Popover/index.js"></script>
 <script type="module" src="./include/ldswc/ExpandableSection/index.js"></script>
 <script type="module" src="./include/ldswc/Menu/index.js"></script>
+<script type="module" src="./include/ldswc/Form/FormElement.js"></script>
+<script type="module" src="./include/ldswc/Form/FormElementLabel.js"></script>
+<script type="module" src="./include/ldswc/Form/FormElementControl.js"></script>
+<script type="module" src="./include/ldswc/Form/FormElementError.js"></script>
+<script type="module" src="./include/ldswc/Form/InputRaw.js"></script>
+<script type="module" src="./include/ldswc/Form/Input.js"></script>
 
 <ldswc-pageheader
 	title="Lightning Design System web components!!"

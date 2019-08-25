@@ -24,7 +24,12 @@ window.ldswcproperties.Menu['ldstmenu'].button = `<ldswc-button size="large" tit
 		},
 		{
 			"menutype": "item",
-			"title": "Expression Builder",
+			"title": "Form and Elements",
+			"href": "index.php?action=Forms&module=ldswebcomponent"
+		},
+		{
+			"menutype": "item",
+			"title": "Combobox/Expression Builder",
 			"href": "index.php?action=EBuilder&module=ldswebcomponent"
 		},
 		{
