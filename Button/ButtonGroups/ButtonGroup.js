@@ -25,7 +25,7 @@ export default class ButtonGroup extends LitElement {
 			 */
 			overflow: { type: Boolean },
 			/**
-			 * array of accordion section(s)
+			 * array of button(s)
 			 */
 			children: { type: Array },
 		};
