@@ -34,6 +34,12 @@ if (typeof window.ldswcproperties=='undefined') {
 <script type="module" src="./include/ldswc/Form/Slider.js"></script>
 <script type="module" src="./include/ldswc/Form/Textarea.js"></script>
 <script type="module" src="./include/ldswc/Form/Select.js"></script>
+<script type="module" src="./include/ldswc/Form/RadioRaw.js"></script>
+<script type="module" src="./include/ldswc/Form/Radio.js"></script>
+<script type="module" src="./include/ldswc/Form/RadioGroup.js"></script>
+<script type="module" src="./include/ldswc/Form/CheckboxRaw.js"></script>
+<script type="module" src="./include/ldswc/Form/Checkbox.js"></script>
+<script type="module" src="./include/ldswc/Form/CheckboxGroup.js"></script>
 
 <ldswc-pageheader
 	title="Lightning Design System web components!!"

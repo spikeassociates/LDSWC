@@ -81,7 +81,7 @@ function onkp(e) {
 		<br><br>
 		<ldswc-textarea label="error state" id="taerror" error="this one is incorrect"></ldswc-textarea>
 	</div>
-	<div class="slds-col slds-size_2-of-12">
+	<div class="slds-col slds-size_3-of-12">
 		<ldswc-select label="first picklist" whenchange="console.log(this);" required>
 		<option value="sop1">SOP1</option>
 		<option value="sop2">SOP2</option>
@@ -96,7 +96,7 @@ function onkp(e) {
 		<option value="sop4">SOP4</option>
 		</ldswc-select>
 	</div>
-	<div class="slds-col slds-size_2-of-12">
+	<div class="slds-col slds-size_3-of-12">
 		<ldswc-select label="error picklist" error="this one is wrong">
 		<option value="sop1">SOP1</option>
 		<option value="sop2">SOP2</option>
@@ -111,6 +111,69 @@ function onkp(e) {
 		<option value="sop4" selected>SOP4</option>
 		</ldswc-select>
 	</div>
-	<div class="slds-col slds-size_2-of-12">
+</div>
+<div class="slds-grid slds-gutters slds-m-top_medium">
+	<div class="slds-col slds-size_3-of-12">
+	<ldswc-radio id="rd1" name="testradio" required whenChange="console.log(this);" label="Radio Label Required"></ldswc-radio><br>
+	<ldswc-radio id="rd2" name="testradio" checked label="Radio Label Checked"></ldswc-radio><br>
+	<ldswc-radio id="rd3" name="testradio" disabled label="Radio Label disabled"></ldswc-radio><br>
+	<ldswc-radio id="rd4" name="testradio" error="wrong" label="Radio Label Error"></ldswc-radio><br>
+	<ldswc-radiogroup
+		children='[
+			{
+				"id":"rdg1",
+				"label":"Radio Label One"
+			},
+			{
+				"id":"rdg2",
+				"disabled":true,
+				"label":"Radio Label Disabled"
+			},
+			{
+				"id":"rdg3",
+				"error":"error",
+				"checked":true,
+				"label":"Radio Label Error"
+			},
+			{
+				"id":"rdg4",
+				"label":"Radio Label Four"
+			}
+		]'
+		whenChange="console.log('RG');"
+		name="testradiog"
+		label="Radio Group Label"
+	></ldswc-radiogroup>
+	</div>
+	<div class="slds-col slds-size_3-of-12">
+	<ldswc-checkbox id="cb1" name="testradio" required whenChange="console.log(this);" label="Checkbox Label Required"></ldswc-checkbox><br>
+	<ldswc-checkbox id="cb2" name="testradio" checked label="Checkbox Label Checked"></ldswc-checkbox><br>
+	<ldswc-checkbox id="cb3" name="testradio" disabled label="Checkbox Label disabled"></ldswc-checkbox><br>
+	<ldswc-checkbox id="cb4" name="testradio" error="wrong" label="Checkbox Label Error"></ldswc-checkbox><br>
+	<ldswc-checkboxgroup
+		children='[
+			{
+				"id":"cbg1",
+				"label":"Checkbox Label one"
+			},
+			{
+				"id":"cbg2",
+				"disabled":true,
+				"label":"Checkbox Label disabled"
+			},
+			{
+				"id":"cbg3",
+				"error":"error",
+				"checked":true,
+				"label":"Checkbox Label Error/checked"
+			},
+			{
+				"id":"cbg4",
+				"label":"Checkbox Label four"
+			}
+		]'
+		whenChange="console.log('RG');"
+		label="Group of Checkboxes"
+	></ldswc-checkboxgroup>
 	</div>
 </div>
