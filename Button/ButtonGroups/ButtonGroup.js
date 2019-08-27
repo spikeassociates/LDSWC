@@ -98,8 +98,7 @@ export default class ButtonGroup extends LitElement {
 (child.sprite ? ' sprite="'+child.sprite + '"' : '') +
 (child.href ? ' href="'+child.href + '"': '') +
 (child.more ? ' more' : '') +
-' title='+child.title +
-' ></'+btnel+'>';
+' title="'+child.title +'" ></'+btnel+'>';
 			if (this.row) {
 				btn += '</span>';
 			}

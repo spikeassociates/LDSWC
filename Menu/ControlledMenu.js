@@ -126,7 +126,9 @@ export default class ControlledMenu extends LitElement {
 
 	firstUpdated() {
 		super.firstUpdated();
-		document.getElementById(this.menuid).addEventListener('click', this.toggle.bind(this), false);
+		if (document.getElementById(this.menuid)) {
+			document.getElementById(this.menuid).addEventListener('click', this.toggle.bind(this), false);
+		}
 		if (this.toggleOnHover) {
 			document.getElementById(this.menuid).parentNode.addEventListener('mouseenter', this.openMenu.bind(this), false);
 			document.getElementById(this.menuid).parentNode.addEventListener('mouseleave', this.closeMenu.bind(this), false);
@@ -134,7 +136,9 @@ export default class ControlledMenu extends LitElement {
 	}
 
 	disconnectedCallback() {
-		document.getElementById(this.menuid).addEventListener('click', this.toggle, false);
+		if (document.getElementById(this.menuid)) {
+			document.getElementById(this.menuid).addEventListener('click', this.toggle, false);
+		}
 		if (this.toggleOnHover) {
 			document.getElementById(this.menuid).parentNode.removeEventListener('mouseenter', this.openMenu, false);
 			document.getElementById(this.menuid).parentNode.removeEventListener('mouseleave', this.closeMenu, false);
@@ -186,7 +190,7 @@ export default class ControlledMenu extends LitElement {
 					title=${child.title}
 					href=${child.href ? child.href : 'javascript:void(0);'}
 					className=${ifDefined(child.className ? child.className : undefined)}
-					?divider=${child.divder}
+					?divider=${child.divider}
 					flavor = ${ifDefined(child.flavor ? child.flavor : undefined)}
 					datavalue = ${ifDefined(child.datavalue ? child.datavalue : undefined)}
 					leftIconicon = ${ifDefined(child.leftIconicon ? child.leftIconicon : undefined)}
@@ -203,7 +207,7 @@ export default class ControlledMenu extends LitElement {
 				return html`<ldswc-menusubheader
 					title=${child.title}
 					className=${ifDefined(child.className ? child.className : undefined)}
-					?divider=${child.divder}
+					?divider=${child.divider}
 				></ldswc-menusubheader>`;
 			}
 		});
@@ -233,7 +237,7 @@ export default class ControlledMenu extends LitElement {
 			'slds-dropdown__list',
 		];
 		var btnelem = '';
-		if (window.ldswcproperties.Menu[this.button]['button'] != undefined) {
+		if (window.ldswcproperties.Menu[this.button] != undefined && window.ldswcproperties.Menu[this.button]['button'] != undefined) {
 			btnelem = '<span id="'+this.menuid+'">'+window.ldswcproperties.Menu[this.button]['button']+'</span>';
 		}
 		return html`

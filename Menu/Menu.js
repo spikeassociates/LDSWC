@@ -44,7 +44,9 @@ export default class Menu extends LitElement {
 	}
 
 	onClickOutside() {
-		this.open = false;
+		if (this.closeOnClickOutside) {
+			this.open = false;
+		}
 	}
 
 	render() {

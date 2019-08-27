@@ -7,6 +7,7 @@ const leftIconElem = (icon, sprite, flavor, alwaysDisplay) => {
 	const iconClasses = [
 		{ 'slds-icon_selected': !alwaysDisplay },
 		{ 'slds-icon-text-default': (flavor == 'inverse' ? false : !alwaysDisplay) },
+		{ [`slds-icon-text-${flavor}`]: (flavor || alwaysDisplay) },
 		{ 'slds-m-right_x-small': !alwaysDisplay },
 		{ 'slds-m-right_small': alwaysDisplay },
 		{ 'slds-icon': alwaysDisplay },
