@@ -3,7 +3,7 @@ if (typeof window.ldswcproperties=='undefined') {
 	window.ldswcproperties = {};
 }
 </script>
-
+<script src="./include/Webservices/WSClientp.js"></script>
 <script type="module" src="./include/ldswc/ClickOutside/ClickOutside.js"></script>
 <script type="module" src="./include/ldswc/Icon/Icon.js"></script>
 <script type="module" src="./include/ldswc/Icon/ScoreIcon.js"></script>
@@ -43,6 +43,7 @@ if (typeof window.ldswcproperties=='undefined') {
 <script type="module" src="./include/ldswc/Tabs/Tabs.js"></script>
 <script type="module" src="./include/ldswc/Tabs/Tab.js"></script>
 <script type="module" src="./include/ldswc/Tabs/TabLink.js"></script>
+<link rel="import" href="include/ldswc/bower_components/vaadin-grid/all-imports.html">
 
 <ldswc-pageheader
 	title="Lightning Design System web components!!"

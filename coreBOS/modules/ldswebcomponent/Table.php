@@ -18,4 +18,30 @@ include 'modules/ldswebcomponent/ldsincs.php';
 	</div>
 </div>
 
-Implement Table here
+<div class="slds-text-heading_large">We are going to use vaadin-grid.</div>
+<ul class="slds-list_dotted">
+	<li>It is an incredible piece of software. Much better than we will ever have time to emulate</li>
+	<li>It is a web componente</li>
+	<li>The license is Apache</li>
+	<li>The look and feel is similar to LDS and it is theme-able so we could even make it look more like LDS</li>
+</ul>
+<vaadin-grid theme="row-dividers" column-reordering-allowed multi-sort>
+	<vaadin-grid-selection-column auto-select frozen></vaadin-grid-selection-column>
+	<vaadin-grid-sort-column width="9em" path="firstname"></vaadin-grid-sort-column>
+	<vaadin-grid-sort-column width="9em" path="lastname"></vaadin-grid-sort-column>
+	<vaadin-grid-column id="addresscolumn" width="15em" flex-grow="2" header="Address"></vaadin-grid-column>
+</vaadin-grid>
+
+<script>
+	var cbws = new cbWSClient('<?php echo $site_URL;?>');
+	// Customize the "Address" column's renderer
+	document.querySelector('#addresscolumn').renderer = (root, grid, rowData) => {
+		root.textContent = `${rowData.item.mailingstreet}, ${rowData.item.mailingcity}`;
+	};
+
+	// Populate the grid with data
+	const grid = document.querySelector('vaadin-grid');
+	cbws.extendSession()
+	.then(() => cbws.doQuery('select firstname, lastname, mailingstreet, mailingcity from Contacts limit 40;'))
+	.then(res => grid.items = res);
+</script>
