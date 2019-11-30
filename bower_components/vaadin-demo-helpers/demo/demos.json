@@ -1,0 +1,25 @@
+{
+    "name": "Vaadin Demos",
+    "pages": [
+    {
+      "name": "Basics",
+      "url": "basic-demos",
+      "src": "basic-demos.html",
+      "meta": {
+        "title": "Vaadin Basic Examples",
+        "description": "",
+        "image": ""
+      }
+    },
+    {
+        "name": "Advanced",
+        "url": "advanced-demos",
+        "src": "advanced-demos.html",
+        "meta": {
+          "title": "Vaadin Advanced Examples",
+          "description": "",
+          "image": ""
+        }
+      }
+    ]
+  }

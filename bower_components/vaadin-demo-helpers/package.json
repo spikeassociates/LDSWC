@@ -1,0 +1,39 @@
+{
+  "name": "@vaadin/vaadin-demo-helpers",
+  "version": "3.0.0",
+  "description": "Helper components for showing Vaadin Element demos",
+  "main": "vaadin-component-demo.html",
+  "repository": "vaadin/vaadin-demo-helpers",
+  "keywords": [
+    "Vaadin",
+    "icons",
+    "web-components",
+    "web-component",
+    "polymer"
+  ],
+  "author": "Vaadin Ltd",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/vaadin/vaadin-demo-helpers/issues"
+  },
+  "homepage": "https://github.com/vaadin/vaadin-demo-helpers",
+  "files": [
+    "vaadin-*.js"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "scripts": {
+    "test": "wct",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:css": "stylelint *.html demo/*.html test/*html",
+    "lint:html": "eslint *.html demo test --ext .html",
+    "lint:js": "eslint *.js test",
+    "lint:polymer": "polymer lint --rules polymer-2 --input vaadin-*.html"
+  },
+  "devDependencies": {
+    "@vaadin/vaadin-component-dev-dependencies": "^3.0.0"
+  }
+}

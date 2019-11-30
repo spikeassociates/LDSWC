@@ -1,0 +1,38 @@
+<dom-module id="advanced-demos">
+  <template>
+    <style include="vaadin-component-demo-shared-styles">
+      :host {
+        display: block;
+      }
+    </style>
+
+    <h3>Advanced Demo</h3>
+    <vaadin-demo-snippet id="advanced-demos-script" when-defined="dom-bind">
+      <template preserve-content>
+        <dom-bind>
+          <template>
+            <label>
+              <input type="checkbox" checked="{{disabled::change}}">
+              Disable input
+            </label>
+            <input type="text" value="text" disabled$="[[disabled]]">
+          </template>
+        </dom-bind>
+        <script>
+          window.addDemoReadyListener('#advanced-demos-script', function(document) {
+            document.querySelector('dom-bind').disabled = true;
+          });
+        </script>
+      </template>
+    </vaadin-demo-snippet>
+
+  </template>
+  <script>
+    class AdvancedDemos extends DemoReadyEventEmitter(Polymer.Element) {
+      static get is() {
+        return 'advanced-demos';
+      }
+    }
+    customElements.define(AdvancedDemos.is, AdvancedDemos);
+  </script>
+</dom-module>

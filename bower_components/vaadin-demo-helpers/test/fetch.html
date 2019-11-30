@@ -1,0 +1,112 @@
+<!doctype html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>vaadin-fetch-demo-data-mixin tests</title>
+
+  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../vaadin-fetch-demo-data-mixin.html">
+  <link rel="import" href="../../polymer/polymer-element.html">
+</head>
+
+<body>
+
+  <dom-module id="x-loader">
+    <template>
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+      <slot></slot>
+    </template>
+  </dom-module>
+
+  <script>
+  document.addEventListener('WebComponentsReady', function() {
+    class XLoader extends Vaadin.FetchDemoDataMixin(Polymer.Element) {
+      static get is() {
+        return 'x-loader';
+      }
+    }
+    customElements.define(XLoader.is, XLoader);
+  });
+  </script>
+
+  <test-fixture id="default">
+    <template>
+      <x-loader></x-loader>
+    </template>
+  </test-fixture>
+
+  <script>
+    describe('basic functionality', () => {
+      let element;
+
+      beforeEach(() => {
+        element = fixture('default');
+      });
+
+      describe('fetch resources', () => {
+        const P2 = window['Polymer'] && window['Polymer'].version && window['Polymer'].version.indexOf('2') === 0;
+
+        (P2 ? it : it.skip)('should import the .html file when using with Polymer 2', done => {
+          element.fetchResource('x-foo.html')
+            .then(e => {
+              expect(e.type).to.eql('load');
+              expect(e.target.localName.toLowerCase()).to.eql('link');
+              expect(window.customElements.get('x-foo')).to.be.ok;
+              done();
+            });
+        });
+
+        (P2 ? it : it.skip)('should reject importing the not-existing .html file', done => {
+          element.fetchResource('x-bar.html')
+            .catch(e => {
+              expect(e.type).to.eql('error');
+              done();
+            });
+        });
+
+        it('should load the .js file', done => {
+          element.fetchResource('x-bar.js')
+            .then(e => {
+              expect(e.type).to.eql('load');
+              expect(window.customElements.get('x-bar')).to.be.ok;
+              done();
+            });
+        });
+
+        it('should reject loading the not-existing .js file', done => {
+          element.fetchResource('x-foo.js')
+            .catch(e => {
+              expect(e.type).to.eql('error');
+              done();
+            });
+        });
+      });
+
+      describe('fetch JSON', () => {
+        it('should load the .json file', done => {
+          element.fetchJSON('x-test.json')
+            .then(result => {
+              expect(result).to.be.an.object;
+              expect(result.data).to.be.an.array;
+              expect(result.data.length).to.eql(2);
+              done();
+            });
+        });
+
+        it('should reject loading the not-existing .json file', done => {
+          element.fetchJSON('x-missing.json')
+            .catch(e => {
+              expect(e.target.status).to.eql(404);
+              done();
+            });
+        });
+
+      });
+    });
+  </script>
+</body>

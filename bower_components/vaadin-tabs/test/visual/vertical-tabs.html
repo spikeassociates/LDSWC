@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Vertical nav visual tests</title>
+  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+  <script>
+    const theme = window.location.search.replace(/.*theme=(\w+).*/, '$1') || 'lumo';
+    document.write(`<link rel="import" href="../../theme/${theme}/vaadin-tab.html">`);
+    document.write(`<link rel="import" href="../../theme/${theme}/vaadin-tabs.html">`);
+  </script>
+</head>
+
+<body>
+  <style media="screen">
+    .capture-block {
+      display: inline-block;
+      width: 800px;
+    }
+  </style>
+
+  <div class="capture-block" id="vertical-tabs">
+    <vaadin-tabs orientation="vertical" style="width: 150px;">
+      <vaadin-tab>Foo</vaadin-tab>
+      <vaadin-tab>Bar</vaadin-tab>
+      <vaadin-tab>Baz</vaadin-tab>
+      <vaadin-tab disabled>Disabled</vaadin-tab>
+      <vaadin-tab>Tab with text in two lines</vaadin-tab>
+      <vaadin-tab><a href="https://example.com">Link with text in two lines</a></vaadin-tab>
+    </vaadin-tabs>
+  </div>
+
+</body>
