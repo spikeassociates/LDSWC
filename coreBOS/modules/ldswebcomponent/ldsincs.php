@@ -40,6 +40,9 @@ if (typeof window.ldswcproperties=='undefined') {
 <script type="module" src="./include/ldswc/Form/CheckboxRaw.js"></script>
 <script type="module" src="./include/ldswc/Form/Checkbox.js"></script>
 <script type="module" src="./include/ldswc/Form/CheckboxGroup.js"></script>
+<script type="module" src="./include/ldswc/Tabs/Tabs.js"></script>
+<script type="module" src="./include/ldswc/Tabs/Tab.js"></script>
+<script type="module" src="./include/ldswc/Tabs/TabLink.js"></script>
 
 <ldswc-pageheader
 	title="Lightning Design System web components!!"

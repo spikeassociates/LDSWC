@@ -34,6 +34,11 @@ window.ldswcproperties.Menu['ldstmenu'].button = `<ldswc-button size="large" tit
 		},
 		{
 			"menutype": "item",
+			"title": "Tabs",
+			"href": "index.php?action=Tabs&module=ldswebcomponent"
+		},
+		{
+			"menutype": "item",
 			"title": "Table",
 			"href": "index.php?action=Table&module=ldswebcomponent"
 		}
