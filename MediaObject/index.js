@@ -1,3 +1,3 @@
-import MediaObject from './MediaObject';
+import MediaObject from './MediaObject.js';
 
 export { MediaObject };

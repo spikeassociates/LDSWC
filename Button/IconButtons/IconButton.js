@@ -97,7 +97,7 @@ export default class IconButton extends LitElement {
 				children =${children}
 				>
 				${this.title && getAssistive(this.title)}
-			</ldswc-button >
+			</ldswc-button>
 		`;
 	}
 }
