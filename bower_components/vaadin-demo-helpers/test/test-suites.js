@@ -1,3 +1,0 @@
-window.VaadinDemoHelpersSuites = [
-  'fetch.html'
-];
