@@ -29,3 +29,10 @@ We are currently working in a [coreBOS extension](https://corebos.org) where we 
 ## Participate
 
  - [![Gitter](https://badges.gitter.im/LDSWC/community.svg)](https://gitter.im/LDSWC/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+ 
+### A small guide for setting up this extension
+
+- clone the repo into include/ldswc
+- copy the corebos directory to modules/ldswebcomponent
+- install the extension with the installmodule.php script
+- navigate to the extension and see the different components we already have implemented
